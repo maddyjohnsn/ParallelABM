@@ -2,41 +2,26 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
-
+#include "agent.h"
+#include "state.h"
 //this will hold our agent structs
-//
-
-#define NAGENTS 20
-
-typedef struct {
-	int id;
-	int homeNode;
-	int currentNode;
-	bool isInfected;
-	bool disposition;
-	//using a fixed size array for this next one because we know it's max... would changing the memory later on be faster?
-	int encounters[NAGENTS];
-
-}Agent;
 
 //if agent interacts with 3 other infected agents- infected
 //
 
-void wakeAgent(){
+//void wakeAgent(){
 
-	for (int i = 0){
-	
-		agents[i].homeNode = rand() % graph->numNodes;
-    		agents[i].currentNode = -1; // not placed yet
-    		for (int j = 0; j < NAGENTS; j++){
-			agents[i].encounters[j] = 0;
-		}
+//	for (int i = 0){
+//	
+//		agents[i].homeNode = rand() % graph->numNodes;
+//    		agents[i].currentNode = -1; // not placed yet
+//    		for (int j = 0; j < NAGENTS; j++){
+//			agents[i].encounters[j] = 0;
+//		}
+//	}
+//}
 
-	}
-
-}
-
-Agent*  makeAgent(int NAGENTS, struct Graph* graph) {
+Agent* makeAgent(int numAgents) {
 	
 
 	//memory for list of agents
@@ -65,10 +50,7 @@ Agent*  makeAgent(int NAGENTS, struct Graph* graph) {
 		}
 		else{
 			agents[i].disposition = false;
-		}
-		
+		}	
 	}
-		
-
 	return agents;
 }

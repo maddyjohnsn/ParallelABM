@@ -1,30 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "state.h"
+#include "agent.h"
 
-// this is not a dynamic graph! this number is used to allocate memory for
-// nodes->neighbors list. 
-#define MAX_NEIGHBORS 100
-
-// Struct for nodes: each node has an id, a list of its neighbors, and how many neighbors it has
-struct Node {
-	int id; 
-	int neighbors[MAX_NEIGHBORS];
-	int numNeighbors;
-}; 
-
-// Struct for graphs: each graph has how many nodes it contains 
-// and a list of Node addresses in memory
-struct Graph {
-	int numNodes; 
-	struct Node* nodes;
-};
-
-// creates a node structure: initializes neighbors to null
-struct Node* createNode(int id) {
-	struct Node* newNode = malloc(sizeof(struct Node)); 
-	newNode->id = id; 
-	return newNode;
-}
 
 // creates a graph structure: initializes a list of lists of neighbors, 
 // each list within the list initialized to NULL (no neighbors) 
@@ -40,55 +18,121 @@ struct Graph* createGraph(int numNodes) {
 	for (int i = 0; i < numNodes; i++) {
         	newGraph->nodes[i].id = i;
         	newGraph->nodes[i].numNeighbors = 0;
+		newGraph->nodes[i].numAgents = 0;
     	}
 	return newGraph;
 }
-// !!!! WARNING !!!! addEdge does not currently check that you don't exceed MAX_NEIGHBORS
-// so don't do that... shouldn't be a problem unless weird things are happening
 // adds an undirectional edge (goes from source to dest and vice versa) between two nodes
-void addEdge(struct Graph* graph, int source, int dest) {
+void addEdge(struct Graph* graph, int source, int dest, int weight) {
+
+	if (graph->nodes[source].numNeighbors >= MAX_NEIGHBORS || graph->nodes[dest].numNeighbors >= MAX_NEIGHBORS) {
+		printf("Nodes cannot exceed %d neighbors\n", MAX_NEIGHBORS);
+		exit(EXIT_FAILURE);
+		}
 	// get the number neighbors src currently has so we can 
 	// add to neighbors list at the correct index
-	int srcCurrentNumNeighbors = graph->nodes[source].numNeighbors;
+	int sourceIndex = graph->nodes[source].numNeighbors;
 	// place dest in source's neighbor list
-	graph->nodes[source].neighbors[srcCurrentNumNeighbors] = dest;
+	graph->nodes[source].neighbors[sourceIndex] = dest;
+	// place weight in weights list
+	graph->nodes[source].weights[sourceIndex] = weight;
 	// increment num neighbors for source
 	graph->nodes[source].numNeighbors++;
 
 
 	// do the reverse of above code so graph is not directional	
-	int destCurrentNumNeighbors = graph->nodes[dest].numNeighbors;
-	graph->nodes[dest].neighbors[destCurrentNumNeighbors] = source;
-	
+	int destIndex = graph->nodes[dest].numNeighbors;
+	graph->nodes[dest].neighbors[destIndex] = source;
+	graph->nodes[dest].weights[destIndex] = weight;
 	graph->nodes[dest].numNeighbors++;
 }
 
 // prints each node and its neighbors. rudimentary right now could make nicer later
 void showGraph(struct Graph* graph) {
 	printf("Vertex:  Adjacency List\n");
+	printf("Format: NodeId(numberOfAgents) ---> neighborNode(edgeWeight), neighborNode(edgeWeight), etc.\n");
 	// loop through nodes
 	for (int i = 0; i < graph->numNodes; i++) {
-		// print node id
-        	printf("%d ---> ", graph->nodes[i].id);
+		// print node id and how many neighbors
+        	printf("%d(%d) ---> ", graph->nodes[i].id, graph->nodes[i].numAgents);
 		// then print its neighbors
 		for (int j = 0; j < graph->nodes[i].numNeighbors; j++) {
-        		printf("%d -> ", graph->nodes[i].neighbors[j]);
+        		printf("%d(%d),  ", graph->nodes[i].neighbors[j], graph->nodes[i].weights[j]);
+			
         	}
-
-        printf("NULL\n");
+        printf("\n");
     }
 }
 
-int main() {
-    // Create a graph with 3 vertices
-    struct Graph* undirectedGraph = createGraph(3);
+// add an agent to a given node
+void addAgentToNode(struct Graph* graph, int nodeId, Agent* agent) {
+	// grab the node to add to
+	struct Node* node = &graph->nodes[nodeId];
+	// get last index based on number of agents
+	int indexToInsert = node->numAgents;
+	if (indexToInsert >= MAX_AGENTS) {
+		printf("Cannot Add Agent: Number of agents in a given node cannot exceed %d agents\n", MAX_AGENTS);
+		exit(EXIT_FAILURE);
+	}
+	// add agent
+	node->agentsInNode[indexToInsert] = agent;
+	// increment number of agents in node
+	node->numAgents++; 
+}
+// remove an agent from a given node
+void removeAgentFromNode(struct Graph* graph, int nodeId, Agent* agent) {
+	
+ 	// grab the node to remove from
+        struct Node* node = &graph->nodes[nodeId];
+	if (node->numAgents == 0) {
+		printf("Cannot Remove Agent: Node%d does not have any agents", nodeId);
+                exit(EXIT_FAILURE);
+        }
+	
+	int idxToRemove = -1; 	
+	for (int i = 0; i < node->numAgents; i++) {
+		if (node->agentsInNode[i] == agent) {
+			idxToRemove = i; 
+			break; 
+		}
+	}
+	// if agent not found
+	if (idxToRemove == -1) {
+	        return;
+    	}
+	// shift indices after the removed index to the left
+	for (int i = idxToRemove; i < node->numAgents - 1; i++) {
+		node->agentsInNode[i] = node->agentsInNode[i + 1];
+    	}
+	//update numAgents
+	node->numAgents--;
+}
+	
 
-    // Add edges
-    addEdge(undirectedGraph, 0, 1);
-    addEdge(undirectedGraph, 0, 2);
-    addEdge(undirectedGraph, 1, 2);
+// probabkly need a destroy function for graph as well....
 
-    showGraph(undirectedGraph);
+int main(int agrc, char** argv) {
+	// Create a graph with 3 vertices
+	struct Graph* undirectedGraph = createGraph(8);
+
+	// Add edges
+	addEdge(undirectedGraph, 0, 1, 3);
+	addEdge(undirectedGraph, 1, 2, 3);
+	addEdge(undirectedGraph, 2, 3, 3);
+	addEdge(undirectedGraph, 3, 4, 3);
+	addEdge(undirectedGraph, 4, 5, 3);
+	addEdge(undirectedGraph, 5, 6, 3);
+	addEdge(undirectedGraph, 6, 7, 3);
+	addEdge(undirectedGraph, 7, 0, 3);
+
+
+
+	Agent* agentsList = makeAgent(20);
+	addAgentToNode(undirectedGraph, 0, &agentsList[0]);
+	showGraph(undirectedGraph);
+	//removeAgentFromNode(undirectedGraph, 0, &agentsList[0]);
+	//showGraph(undirectedGraph);
+	//removeAgentFromNode(undirectedGraph, 0, &agentsList[0]);
     return 0;
 }
 
