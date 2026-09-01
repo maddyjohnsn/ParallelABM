@@ -36,7 +36,7 @@ void wakeAgent(){
 
 }
 
-int main() {
+Agent*  makeAgent(int NAGENTS, struct Graph* graph) {
 	
 
 	//memory for list of agents
@@ -67,12 +67,8 @@ int main() {
 			agents[i].disposition = false;
 		}
 		
-		printf("%d\n", agents[i].id);
-		printf("%d\n", agents[i].isInfected);
-		printf("%d\n", agents[i].disposition);
-		printf("%d\n", numAddict);
 	}
 		
 
-	return 0;
+	return agents;
 }
