@@ -28,7 +28,7 @@ int main() {
 	float numInfected = NAGENTS*0.05;
 	
 	//counter to see how many have a disposition already
-	numAddict = 0;
+	int numAddict = 0;
 
 	//10% of americans are addicted to drugs. 5% of ours will start addicted
 	for(int i = 0; i<NAGENTS; i++){
@@ -41,17 +41,22 @@ int main() {
 		//agents[i].currentNode = ;
 		
 		//maybe like 20% are moderately prone to addiction. 20 are heavily prone and 60 are just average
-		int randomInfect = rand(); % 21;
-		if(randomInfect > 16 && numAddict < 4){
+		int randomInfect = rand() % 21;
+		if(randomInfect > 16 && numAddict < NAGENTS/5){
 			numAddict ++;
-			agents[i].disposition = 
+			agents[i].disposition = true;
 			
 		}
-		agents[i].disposition
+		else{
+			agents[i].disposition = false;
+		}
 		
-
+		printf("%d\n", agents[i].id);
+		printf("%d\n", agents[i].isInfected);
+		printf("%d\n", agents[i].disposition);
+		printf("%d\n", numAddict);
 	}
-	
+		
 
 	return 0;
 }
