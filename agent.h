@@ -2,13 +2,12 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
-
 //this will hold our agent structs
 //
 
 #define NAGENTS 20
 
-typedef struct {
+typedef struct Agent {
 	int id;
 	int homeNode;
 	int currentNode;
@@ -24,4 +23,4 @@ typedef struct {
 
 void wakeAgent();
 
-Agent*  makeAgent(int NAGENTS, struct Graph* graph) ;
+Agent*  makeAgent(int numAgents) ;
