@@ -41,7 +41,6 @@ Agent* makeAgent(int numAgents, struct Graph* graph) {
 		//also gotta make it random because 
 		//agents[i].currentNode = ;
 		
-		//maybe like 20% are moderately prone to addiction. 20 are heavily prone and 60 are just average
 		int randomInfect = rand() % 21;
 		if(randomInfect > 16 && numAddict < NAGENTS/5){
 			numAddict ++;
