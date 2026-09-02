@@ -21,7 +21,7 @@
 //	}
 //}
 
-Agent* makeAgent(int numAgents) {
+Agent* makeAgent(int numAgents, struct Graph* graph) {
 	
 
 	//memory for list of agents

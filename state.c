@@ -47,6 +47,24 @@ void addEdge(struct Graph* graph, int source, int dest, int weight) {
 	graph->nodes[dest].numNeighbors++;
 }
 
+
+//adding it to make a ring edge so that we don't have to do the work each time
+//takes the graph and 1 weight but in the future we could randomize it!!
+
+void addRingEdges(struct Graph* graph, int weight){
+	for(int i = 0; i<graph->numNodes; i++){
+		int nextNode = (i+1);
+		if (nextNode == graph->numNodes){
+			nextNode =0;
+		}
+		addEdge(graph, i, nextNode, weight);
+	}
+}
+
+
+//we could in the future add chords in our ring
+
+
 // prints each node and its neighbors. rudimentary right now could make nicer later
 void showGraph(struct Graph* graph) {
 	printf("Vertex:  Adjacency List\n");
@@ -65,7 +83,7 @@ void showGraph(struct Graph* graph) {
 }
 
 // add an agent to a given node
-void addAgentToNode(struct Graph* graph, int nodeId, Agent* agent) {
+void addAgentToNode(struct Graph* graph, int nodeId, struct Agent* agent) {
 	// grab the node to add to
 	struct Node* node = &graph->nodes[nodeId];
 	// get last index based on number of agents
@@ -80,7 +98,7 @@ void addAgentToNode(struct Graph* graph, int nodeId, Agent* agent) {
 	node->numAgents++; 
 }
 // remove an agent from a given node
-void removeAgentFromNode(struct Graph* graph, int nodeId, Agent* agent) {
+void removeAgentFromNode(struct Graph* graph, int nodeId, struct Agent* agent) {
 	
  	// grab the node to remove from
         struct Node* node = &graph->nodes[nodeId];
@@ -109,30 +127,45 @@ void removeAgentFromNode(struct Graph* graph, int nodeId, Agent* agent) {
 }
 	
 
-// probabkly need a destroy function for graph as well....
 
+
+
+// probabkly need a destroy function for graph as well....
+//BOOM^ done (I hope)
+
+void freeGraph(struct Graph* graph) {
+    if (graph == NULL) return;
+    free(graph->nodes);
+    free(graph);
+}
+
+/*
 int main(int agrc, char** argv) {
 	// Create a graph with 3 vertices
 	struct Graph* undirectedGraph = createGraph(8);
 
 	// Add edges
-	addEdge(undirectedGraph, 0, 1, 3);
-	addEdge(undirectedGraph, 1, 2, 3);
-	addEdge(undirectedGraph, 2, 3, 3);
-	addEdge(undirectedGraph, 3, 4, 3);
-	addEdge(undirectedGraph, 4, 5, 3);
-	addEdge(undirectedGraph, 5, 6, 3);
-	addEdge(undirectedGraph, 6, 7, 3);
-	addEdge(undirectedGraph, 7, 0, 3);
+//	addEdge(undirectedGraph, 0, 1, 3);
+//	addEdge(undirectedGraph, 1, 2, 3);
+//	addEdge(undirectedGraph, 2, 3, 3);
+//	addEdge(undirectedGraph, 3, 4, 3);
+//	addEdge(undirectedGraph, 4, 5, 3);
+//	addEdge(undirectedGraph, 5, 6, 3);
+//	addEdge(undirectedGraph, 6, 7, 3);
+//	addEdge(undirectedGraph, 7, 0, 3);
 
+	addRingEdges(undirectedGraph, 3);
 
-
-	Agent* agentsList = makeAgent(20);
+	Agent* agentsList = makeAgent(20, undirectedGraph);
 	addAgentToNode(undirectedGraph, 0, &agentsList[0]);
 	showGraph(undirectedGraph);
 	//removeAgentFromNode(undirectedGraph, 0, &agentsList[0]);
 	//showGraph(undirectedGraph);
 	//removeAgentFromNode(undirectedGraph, 0, &agentsList[0]);
-    return 0;
+
+	freeGraph(undirectedGraph);
+   	return 0;
 }
 
+
+*/
