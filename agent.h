@@ -15,9 +15,9 @@ typedef struct Agent {
 	int currentNode;
 	bool isInfected;
 	bool disposition;
+
 	//using a fixed size array for this next one because we know it's max... would changing the memory later on be faster?
 	int infectedEncounters;
-
 }Agent;
 
 //if agent interacts with 3 other infected agents- infected
