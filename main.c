@@ -15,7 +15,11 @@ int main(){
         //showGraph(undirectedGraph);
         //removeAgentFromNode(undirectedGraph, 0, &agentsList[0]);
 
+	// test to see if node infection counter is working
         freeGraph(undirectedGraph);
+	for (int i = 0; i < 20; i++) {
+		printf("isInfected: %d\n", agentsList[i].isInfected);
+	}
         return 0;
 
 

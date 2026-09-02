@@ -14,11 +14,12 @@ struct Graph* createGraph(int numNodes) {
 	newGraph->nodes = malloc(numNodes * sizeof(struct Node));
 
 	// loop through and populate graph with nodes, give each node id = i
-	// and set their numNeighbors to 0
+	// and set their numNeighbors, numAgents, and numInfected to 0
 	for (int i = 0; i < numNodes; i++) {
         	newGraph->nodes[i].id = i;
         	newGraph->nodes[i].numNeighbors = 0;
 		newGraph->nodes[i].numAgents = 0;
+		newGraph->nodes[i].numInfected = 0;
     	}
 	return newGraph;
 }
@@ -68,11 +69,11 @@ void addRingEdges(struct Graph* graph, int weight){
 // prints each node and its neighbors. rudimentary right now could make nicer later
 void showGraph(struct Graph* graph) {
 	printf("Vertex:  Adjacency List\n");
-	printf("Format: NodeId(numberOfAgents) ---> neighborNode(edgeWeight), neighborNode(edgeWeight), etc.\n");
+	printf("Format: NodeId(numberOfAgents)(numInfected) ---> neighborNode(edgeWeight), neighborNode(edgeWeight), etc.\n");
 	// loop through nodes
 	for (int i = 0; i < graph->numNodes; i++) {
 		// print node id and how many neighbors
-        	printf("%d(%d) ---> ", graph->nodes[i].id, graph->nodes[i].numAgents);
+        	printf("%d(%d)(%d) ---> ", graph->nodes[i].id, graph->nodes[i].numAgents, graph->nodes[i].numInfected);
 		// then print its neighbors
 		for (int j = 0; j < graph->nodes[i].numNeighbors; j++) {
         		printf("%d(%d),  ", graph->nodes[i].neighbors[j], graph->nodes[i].weights[j]);
@@ -95,7 +96,13 @@ void addAgentToNode(struct Graph* graph, int nodeId, struct Agent* agent) {
 	// add agent
 	node->agentsInNode[indexToInsert] = agent;
 	// increment number of agents in node
-	node->numAgents++; 
+	node->numAgents++;
+ 
+	// check if agent is infected
+	if (agent->isInfected) {
+	// if yes, increment numInfected
+		node->numInfected++;
+	}
 }
 // remove an agent from a given node
 void removeAgentFromNode(struct Graph* graph, int nodeId, struct Agent* agent) {
@@ -124,6 +131,12 @@ void removeAgentFromNode(struct Graph* graph, int nodeId, struct Agent* agent) {
     	}
 	//update numAgents
 	node->numAgents--;
+	
+	// check if agent is infected
+	if (agent->isInfected) {
+        // if yes, decrement numInfected
+                node->numInfected++;
+        } 
 }
 	
 

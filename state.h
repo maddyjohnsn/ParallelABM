@@ -13,6 +13,7 @@ struct Node {
     int neighbors[MAX_NEIGHBORS];
     int weights[MAX_NEIGHBORS];
     int numNeighbors;
+    int numInfected;
     struct Agent* agentsInNode[MAX_AGENTS];
     int numAgents;
 };
