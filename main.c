@@ -1,25 +1,22 @@
-
+#include "state.h"
+#include "agent.h"
 
 int main(){
 
 
-	struct Graph* graph = createGraph(/* however many nodes */);
-	//making struct in here?? adding edge???
+        struct Graph* undirectedGraph = createGraph(8);
 
-	//maybe not the right place / way to be doing this come back to it
-	Agent* agents = makeAgents(NAGENTS, graph);
-	
-	if (agents == NULL) {
-        	fprintf(stderr, "Failed to allocate agents\n");
-        	return 1;
-    	}
+        addRingEdges(undirectedGraph, 3);
 
-	//eventually need to free everything
-	//free(agents);
-	//free(graph->nodes);
-	//free(graph);
+        Agent* agentsList = makeAgent(20, undirectedGraph);
+        addAgentToNode(undirectedGraph, 0, &agentsList[0]);
+        showGraph(undirectedGraph);
+        //removeAgentFromNode(undirectedGraph, 0, &agentsList[0]);
+        //showGraph(undirectedGraph);
+        //removeAgentFromNode(undirectedGraph, 0, &agentsList[0]);
 
-	return 0;
+        freeGraph(undirectedGraph);
+        return 0;
 
 
 
