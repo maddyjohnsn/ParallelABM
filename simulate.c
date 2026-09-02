@@ -65,7 +65,7 @@ void simulateDay(struct Graph* graph,int numAgents, struct  Agent* agents){
 	//every day we want to move agents x2
 	//
 	for(int i = 0; i<2; i++){
-		moveAgent(agents, numAgents, graph)
+		moveAgent(agents, numAgents, graph);
 
 
 	}
