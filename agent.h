@@ -26,3 +26,6 @@ typedef struct Agent {
 //void wakeAgent();
 
 Agent*  makeAgent(struct Graph* graph) ;
+
+
+void freeAgents(Agent* agents);

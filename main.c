@@ -48,7 +48,7 @@ int main(){
         for (int i = 0; i < NAGENTS; i++) {
                 printf("isInfected: %d  currentNode: %d\n", agentsList[i].isInfected, agentsList[i].currentNode);
         }   
-
+	freeAgents(agentsList);
 	freeGraph(undirectedGraph);
 	return 0;
 
