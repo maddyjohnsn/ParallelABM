@@ -129,9 +129,6 @@ void removeAgentFromNode(struct Graph* graph, int nodeId, struct Agent* agent) {
 	        return;
     	}
 
-	if (agent->isInfected) {
-                node->numInfected--;
-        }
 	// shift indices after the removed index to the left
 	for (int i = idxToRemove; i < node->numAgents - 1; i++) {
 		node->agentsInNode[i] = node->agentsInNode[i + 1];
