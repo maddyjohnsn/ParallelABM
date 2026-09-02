@@ -46,7 +46,7 @@ void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
 			}
 		}else{
 			next = current+1;
-			if (next > graph->numNodes){
+			if (next >= graph->numNodes){
 				next = 0;
 
 			}

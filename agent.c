@@ -61,3 +61,7 @@ Agent* makeAgent(struct Graph* graph) {
 	}
 	return agents;
 }
+
+void freeAgents(Agent* agents) {
+    free(agents);
+}
