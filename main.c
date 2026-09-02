@@ -26,7 +26,11 @@ int main(){
 	//end day and update infected
 	//run 5ever
 
+	// test to see if node infection counter is working
         freeGraph(undirectedGraph);
+	for (int i = 0; i < 20; i++) {
+		printf("isInfected: %d\n", agentsList[i].isInfected);
+	}
         return 0;
 
 
