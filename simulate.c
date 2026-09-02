@@ -17,12 +17,17 @@ void updateInfection(Agent* agents, int numAgents){
                 		infectedContacts++;
             		}
         	}
+
+		//want it to be 3 if agent is not predisposed and 2 if yes
         	if (infectedContacts >= 3) {
             		agents[i].isInfected = true;
-        	}
+        
+			
+		}
 
 
 	}
 
 }
+
 
