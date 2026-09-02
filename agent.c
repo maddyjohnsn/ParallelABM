@@ -33,6 +33,14 @@ Agent* makeAgent(struct Graph* graph) {
 
 	//10% of americans are addicted to drugs. 5% of ours will start addicted
 	for(int i = 0; i<NAGENTS; i++){
+		// initialize struct variables to 0 or false.
+		agents[i].id = 0; 
+		agents[i].homeNode = 0; 
+		agents[i].currentNode = 0; 
+		agents[i].isInfected = false; 
+		agents[i].disposition = false; 
+		agents[i].infectedEncounters = 0; 
+
 		if(i< numInfected){
 			agents[i].isInfected = true;
 		}
