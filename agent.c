@@ -21,12 +21,12 @@
 //	}
 //}
 
-Agent* makeAgent(int numAgents, struct Graph* graph) {
+Agent* makeAgent(struct Graph* graph) {
 	
 
 	//memory for list of agents
 	Agent* agents = malloc(NAGENTS * sizeof(Agent));
-	float numInfected = NAGENTS*0.05;
+	float numInfected = NAGENTS*0.25;
 	
 	//counter to see how many have a disposition already
 	int numAddict = 0;

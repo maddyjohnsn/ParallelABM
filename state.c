@@ -103,6 +103,9 @@ void addAgentToNode(struct Graph* graph, int nodeId, struct Agent* agent) {
 	// if yes, increment numInfected
 		node->numInfected++;
 	}
+
+	// update currentnode
+	agent->currentNode = nodeId; 
 }
 // remove an agent from a given node
 void removeAgentFromNode(struct Graph* graph, int nodeId, struct Agent* agent) {
@@ -135,8 +138,11 @@ void removeAgentFromNode(struct Graph* graph, int nodeId, struct Agent* agent) {
 	// check if agent is infected
 	if (agent->isInfected) {
         // if yes, decrement numInfected
-                node->numInfected++;
+                node->numInfected--;
         } 
+
+	// set currentNode to -1 upon removal. This will update when added to new node. 
+	agent->currentNode = -1;
 }
 	
 

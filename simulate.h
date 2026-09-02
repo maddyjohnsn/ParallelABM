@@ -3,7 +3,7 @@
 //
 //
 
-void updateInfection(Agent* agents, int numAgents);
+void updateInfection(struct Graph* graph);
 
 
-void simulateDay(struct Graph* graph, Agent* agents, int numAgents);
+//void simulateDay(struct Graph* graph, Agent* agents, int numAgents);

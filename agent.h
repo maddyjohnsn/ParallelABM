@@ -7,7 +7,7 @@
 //this will hold our agent structs
 //
 
-#define NAGENTS 20
+#define NAGENTS 100
 
 typedef struct Agent {
 	int id;
@@ -16,7 +16,7 @@ typedef struct Agent {
 	bool isInfected;
 	bool disposition;
 	//using a fixed size array for this next one because we know it's max... would changing the memory later on be faster?
-	int encounters[NAGENTS];
+	int infectedEncounters;
 
 }Agent;
 
@@ -25,4 +25,4 @@ typedef struct Agent {
 
 //void wakeAgent();
 
-Agent*  makeAgent(int numAgents, struct Graph* graph) ;
+Agent*  makeAgent(struct Graph* graph) ;

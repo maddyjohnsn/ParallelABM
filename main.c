@@ -1,5 +1,6 @@
 #include "state.h"
 #include "agent.h"
+#include "simulate.h"
 
 int main(){
 
@@ -8,14 +9,23 @@ int main(){
 
         addRingEdges(undirectedGraph, 3);
 
-        Agent* agentsList = makeAgent(20, undirectedGraph);
+        Agent* agentsList = makeAgent(undirectedGraph);
+	for (int i = 0; i< NAGENTS; i++) {
+		addAgentToNode(undirectedGraph, i%8, &agentsList[i]);
+	}
         addAgentToNode(undirectedGraph, 0, &agentsList[0]);
         showGraph(undirectedGraph);
+        for (int i = 0; i < NAGENTS; i++) {
+                printf("isInfected: %d  currentNode: %d\n", agentsList[i].isInfected, agentsList[i].currentNode);
+        }   
+
+	updateInfection(undirectedGraph); 
+	showGraph(undirectedGraph);
         //removeAgentFromNode(undirectedGraph, 0, &agentsList[0]);
         //showGraph(undirectedGraph);
         //removeAgentFromNode(undirectedGraph, 0, &agentsList[0]);
 
-
+	
 	//here's where we need to start doing day by day
 
 	//step 1: is agent infected at home node?
@@ -27,12 +37,13 @@ int main(){
 	//run 5ever
 
 	// test to see if node infection counter is working
-        freeGraph(undirectedGraph);
-	for (int i = 0; i < 20; i++) {
-		printf("isInfected: %d\n", agentsList[i].isInfected);
-	}
-        return 0;
+        
+        for (int i = 0; i < NAGENTS; i++) {
+                printf("isInfected: %d  currentNode: %d\n", agentsList[i].isInfected, agentsList[i].currentNode);
+        }   
 
+	freeGraph(undirectedGraph);
+	return 0;
 
 
 }
