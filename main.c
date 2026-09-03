@@ -15,11 +15,13 @@ int main(){
 	}
 	int numAgents = NAGENTS; 
 
+	agentDisposition(agentsList);
+
         showGraph(undirectedGraph);
 	printf("\n\n%d\n\n", NAGENTS);
         for (int i = 0; i < NAGENTS; i++) {
 		printf("%d\n", i);
-                printf("isInfected: %d  currentNode: %d\n", agentsList[i].isInfected, agentsList[i].currentNode);
+                printf("isInfected: %d  currentNode: %d    disposition: %d\n", agentsList[i].isInfected, agentsList[i].currentNode, agentsList[i].disposition);
 		printf("------------check---------------");        
 	}
 	printf("before nagents redef"); 
