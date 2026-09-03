@@ -24,7 +24,7 @@ bool contains(int arr[], int size, int value){
 
 }
 
-Agent* makeAgent(struct Graph* graph) {
+Agent* makeAgent(struct Graph* graph, int NAGENTS) {
 	
 
 	//memory for list of agents
@@ -61,8 +61,7 @@ Agent* makeAgent(struct Graph* graph) {
 
 
 
-int agentDisposition(struct Agent* agents){
-
+int agentDisposition(struct Agent* agents, int NAGENTS){
 	int twentyPercent = NAGENTS * 0.2;
 
                 //printf("twentyPercent: %d\n", twentyPercent);
@@ -72,38 +71,39 @@ int agentDisposition(struct Agent* agents){
                 //
 
                 //list to store agents who will have positive disposition
-                int dispoAgents[twentyPercent];
+                
+	
+	int dispoAgents[twentyPercent];
+	int countRepeats = 0;
 
-                int countRepeats = 0;
 
 
-
-
-                for(int j= 0; j<twentyPercent; j++){
-                        int whichAgent = rand() % 100;
+	 for(int j= 0; j<twentyPercent; j++){
+                        int whichAgent = rand() % NAGENTS;
 
 
                         //need ocntains function
-                        if (contains(dispoAgents, j, whichAgent) == false) {
-                                dispoAgents[j] = whichAgent;
-                                printf("randomNumber:: %d\n", whichAgent);
-                        }
-                        else {
-                                countRepeats ++;
-                        }
+			//
+			//
 
-                        printf("j is: %d\n", j);
-
+		if (contains(dispoAgents, j, whichAgent) == false) {
+                        dispoAgents[j] = whichAgent;
+                        printf("randomNumber:: %d\n", whichAgent);
                 }
+                else {
+                        countRepeats ++;
+                }
+
+                printf("j is: %d\n", j);
+	}
 
 
 
                 //but are there repeats?? need to acount for that
                 //for 20 agents, try to get the agent at the i of dispoagent and make that agents disposition true
-                for(int k = 0; k<twentyPercent; k++){
-                        agents[dispoAgents[k]].disposition = true;
-                }
-
+	for(int k = 0; k<twentyPercent; k++){
+        	agents[dispoAgents[k]].disposition = true;
+        }
 	return(countRepeats);
 
 }

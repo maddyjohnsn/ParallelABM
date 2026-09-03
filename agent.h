@@ -7,7 +7,6 @@
 //this will hold our agent structs
 //
 
-#define NAGENTS 100
 
 typedef struct Agent {
 	int id;
@@ -25,8 +24,8 @@ typedef struct Agent {
 
 //void wakeAgent();
 
-Agent*  makeAgent(struct Graph* graph) ;
+Agent*  makeAgent(struct Graph* graph, int NAGENTS) ;
 
-int agentDisposition(struct Agent* agents);
+int agentDisposition(struct Agent* agents, int NAGENTS);
 
 void freeAgents(Agent* agents);
