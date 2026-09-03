@@ -159,6 +159,30 @@ void freeGraph(struct Graph* graph) {
     free(graph);
 }
 
+void writeData(struct Graph* graph, char *outputFile) {
+	FILE *node_file = fopen(outputFile, "w");
+	if (node_file == NULL) {
+        	perror("Error opening nodes file");
+        	return;
+    	}
+
+	fprintf(node_file, "(nodeID, percentInfected), edges\n");
+	for (int i = 0; i<graph->numNodes; i++) {
+		struct Node* node = &graph->nodes[i];
+		double percentInfected = (double) node->numInfected / (double) node->numAgents;
+		fprintf(node_file, "(%d, %.2f);", i, percentInfected);
+	
+		for (int j = 0; j<node->numNeighbors; j++) {
+			fprintf(node_file, "(%d,%d)", i, node->neighbors[j]);
+			if (j < node->numNeighbors - 1) {
+                		fprintf(node_file, ";");   
+			}
+			
+		}
+		fprintf(node_file, "\n");
+	}
+	fclose(node_file);
+}
 /*
 int main(int agrc, char** argv) {
 	// Create a graph with 3 vertices

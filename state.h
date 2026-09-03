@@ -38,4 +38,5 @@ void removeAgentFromNode(struct Graph* graph, int nodeId, struct Agent* agent);
 
 void freeGraph(struct Graph* graph);
 
+void writeData(struct Graph* graph, char *outputFile);
 #endif
