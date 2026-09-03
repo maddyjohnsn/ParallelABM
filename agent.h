@@ -27,6 +27,6 @@ typedef struct Agent {
 
 Agent*  makeAgent(struct Graph* graph) ;
 
-void agentDisposition(struct Agent* agents);
+int agentDisposition(struct Agent* agents);
 
 void freeAgents(Agent* agents);

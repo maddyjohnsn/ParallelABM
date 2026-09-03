@@ -61,7 +61,7 @@ Agent* makeAgent(struct Graph* graph) {
 
 
 
-void agentDisposition(struct Agent* agents){
+int agentDisposition(struct Agent* agents){
 
 	int twentyPercent = NAGENTS * 0.2;
 
@@ -103,6 +103,8 @@ void agentDisposition(struct Agent* agents){
                 for(int k = 0; k<twentyPercent; k++){
                         agents[dispoAgents[k]].disposition = true;
                 }
+
+	return(countRepeats);
 
 }
 
