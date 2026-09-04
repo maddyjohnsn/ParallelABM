@@ -6,9 +6,11 @@ int main(int argc, char *argv[]){
 
 	//use the right arguments
 	int err;
-    	if(argc!=3 ) {
+    	if(argc!=4 ) {
         	printf("Missing the first argument:  number of agents to create\n");
         	printf("Missing the second argument:  number of nodes to create\n");
+		printf("Missing the third argument:  number of days to create\n");
+
 		return 1;
     	}
 
@@ -16,7 +18,7 @@ int main(int argc, char *argv[]){
 
 	int NAGENTS = atoi(argv[1]);
 	int NNODES = atoi(argv[2]);
-
+	int DAYS = atoi(argv[3]);
 
 	//make graph and agents
         struct Graph* undirectedGraph = createGraph(NNODES);
