@@ -2,6 +2,8 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import csv
 
+
+# need to change this so that it seperates each chunk of graph data into their own node and edge data to pass to visualize().
 def readData(filename):
 
 	nodesInfectionRates = {}
@@ -30,6 +32,8 @@ def readData(filename):
 
 nodesInfectionRates, edges = readData("testOutput1step.csv")
 
+
+# need to change this so that it looks at multiple graph snapshots and creates animation that shows infection spread. 
 def visualize(nodesAndIR, edges):
 	graph = nx.Graph()
 	graph.add_edges_from(edges)

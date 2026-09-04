@@ -158,8 +158,20 @@ void freeGraph(struct Graph* graph) {
     free(graph->nodes);
     free(graph);
 }
-
+// this function writes "snapshots" of graph data into a file
+// each time it is called it will write the data from the graph at that instant, and either
+// append to an existing file or create a new file
 void writeData(struct Graph* graph, char *outputFile) {
+
+	//need to check if file exists yet
+
+	// if it does not, open in write mode
+
+	// if it does, open in append mode
+
+	// before and after each chunk of data from one graph snapshot, place a special seperator charater (maybe %! or something).
+	// this is so we can split on that character when reading the data to create the animation
+	
 	FILE *node_file = fopen(outputFile, "w");
 	if (node_file == NULL) {
         	perror("Error opening nodes file");
