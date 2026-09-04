@@ -39,6 +39,8 @@ int main(int argc, char *argv[]){
         for (int i = 0; i < NAGENTS; i++) {
                 printf("isInfected: %d  currentNode: %d\n", agentsList[i].isInfected, agentsList[i].currentNode);
         }   
+	moveAgent(agentsList, numAgents, undirectedGraph);
+	updateInfection(undirectedGraph); 
 	freeAgents(agentsList);
 	freeGraph(undirectedGraph);
 	return 0;
