@@ -60,14 +60,13 @@ void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
 
 }
 
-void simulateDay(struct Graph* graph,int numAgents, struct  Agent* agents){
+void simulateDay(int days, struct Graph* graph,int numAgents, struct  Agent* agents){
 
 	//every day we want to move agents x2
 	//
-	for(int i = 0; i<2; i++){
+	for(int i = 0; i<days; i++){
 		moveAgent(agents, numAgents, graph);
-
-
+		updateInfection(graph);
 	}
 
 
