@@ -19,6 +19,11 @@ int main(int argc, char *argv[]){
 	int NNODES = atoi(argv[2]);
 	int DAYS = atoi(argv[3]);
 
+	
+	//malloc for dailyinfected rates
+	//
+	int* dailyInfectedCounts = malloc(DAYS*sizeof(int));
+
 
 	//make graph and agents
         struct Graph* undirectedGraph = createGraph(NNODES);
@@ -37,10 +42,19 @@ int main(int argc, char *argv[]){
 	//take steps and update infection
 
 
-	simulateDay(DAYS, undirectedGraph, NAGENTS, agentsList);	
+	simulateDay(DAYS, undirectedGraph, NAGENTS, agentsList, dailyInfectedCounts);	
 	
 
+	for (int i = 0; i < DAYS; i++) {
+ 
+		
+		printf("Day %d: %d infected\n", i, dailyInfectedCounts[i]);
+	}	
+
+	printf("%d infected\n",  dailyInfectedCounts[DAYS - 1]);
+
 	//free memory
+	free(dailyInfectedCounts);
 	freeAgents(agentsList);
 	freeGraph(undirectedGraph);
 	return 0;
