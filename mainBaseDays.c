@@ -6,9 +6,10 @@ int main(int argc, char *argv[]){
 
 	//use the right arguments
 	int err;
-    	if(argc!=3 ) {
+    	if(argc!=4 ) {
         	printf("Missing the first argument:  number of agents to create\n");
         	printf("Missing the second argument:  number of nodes to create\n");
+		printf("Missing the third argument:  number of days to simulate\n");
 		return 1;
     	}
 
@@ -16,6 +17,7 @@ int main(int argc, char *argv[]){
 
 	int NAGENTS = atoi(argv[1]);
 	int NNODES = atoi(argv[2]);
+	int DAYS = atoi(argv[3]);
 
 
 	//make graph and agents
@@ -32,11 +34,12 @@ int main(int argc, char *argv[]){
 	//add agent dispositions
 	agentDisposition(agentsList, NAGENTS);
 
-	//take one step and update infection
-	moveAgent(agentsList, numAgents, undirectedGraph);
-	updateInfection(undirectedGraph); 
+	//take steps and update infection
+
+
+	simulateDay(DAYS, undirectedGraph, NAGENTS, agentsList);	
 	
-	
+
 	//free memory
 	freeAgents(agentsList);
 	freeGraph(undirectedGraph);

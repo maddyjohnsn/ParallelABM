@@ -150,8 +150,6 @@ void removeAgentFromNode(struct Graph* graph, int nodeId, struct Agent* agent) {
 
 
 
-// probabkly need a destroy function for graph as well....
-//BOOM^ done (I hope)
 
 void freeGraph(struct Graph* graph) {
     if (graph == NULL) return;
@@ -159,33 +157,3 @@ void freeGraph(struct Graph* graph) {
     free(graph);
 }
 
-/*
-int main(int agrc, char** argv) {
-	// Create a graph with 3 vertices
-	struct Graph* undirectedGraph = createGraph(8);
-
-	// Add edges
-//	addEdge(undirectedGraph, 0, 1, 3);
-//	addEdge(undirectedGraph, 1, 2, 3);
-//	addEdge(undirectedGraph, 2, 3, 3);
-//	addEdge(undirectedGraph, 3, 4, 3);
-//	addEdge(undirectedGraph, 4, 5, 3);
-//	addEdge(undirectedGraph, 5, 6, 3);
-//	addEdge(undirectedGraph, 6, 7, 3);
-//	addEdge(undirectedGraph, 7, 0, 3);
-
-	addRingEdges(undirectedGraph, 3);
-
-	Agent* agentsList = makeAgent(20, undirectedGraph);
-	addAgentToNode(undirectedGraph, 0, &agentsList[0]);
-	showGraph(undirectedGraph);
-	//removeAgentFromNode(undirectedGraph, 0, &agentsList[0]);
-	//showGraph(undirectedGraph);
-	//removeAgentFromNode(undirectedGraph, 0, &agentsList[0]);
-
-	freeGraph(undirectedGraph);
-   	return 0;
-}
-
-
-*/
