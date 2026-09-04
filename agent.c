@@ -75,27 +75,24 @@ int agentDisposition(struct Agent* agents, int NAGENTS){
 	
 	int dispoAgents[twentyPercent];
 	int countRepeats = 0;
+	int j = 0;
 
 
-
-	 for(int j= 0; j<twentyPercent; j++){
-                        int whichAgent = rand() % NAGENTS;
+	while(j<twentyPercent){
 
 
-                        //need ocntains function
-			//
-			//
-
+		int whichAgent = rand() % NAGENTS;
 		if (contains(dispoAgents, j, whichAgent) == false) {
                         dispoAgents[j] = whichAgent;
-                        printf("randomNumber:: %d\n", whichAgent);
-                }
+			j++;
+		}
                 else {
                         countRepeats ++;
                 }
 
-                printf("j is: %d\n", j);
 	}
+
+
 
 
 

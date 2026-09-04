@@ -26,18 +26,18 @@ int main(int argc, char *argv[]){
 
 	agentDisposition(agentsList, NAGENTS);
 
-        showGraph(undirectedGraph);
-	printf("\n\n%d\n\n", NAGENTS);
+  //      showGraph(undirectedGraph);
+//	printf("\n\n%d\n\n", NAGENTS);
         for (int i = 0; i < NAGENTS; i++) {
-		printf("%d\n", i);
-                printf("isInfected: %d  currentNode: %d    disposition: %d\n", agentsList[i].isInfected, agentsList[i].currentNode, agentsList[i].disposition);
-		printf("------------check---------------");        
+	//	printf("%d\n", i);
+        //        printf("isInfected: %d  currentNode: %d    disposition: %d\n", agentsList[i].isInfected, agentsList[i].currentNode, agentsList[i].disposition);
+	//	printf("------------check---------------");        
 	}
-	printf("before nagents redef"); 
+	//printf("before nagents redef"); 
 	
-	printf("after moveagents");
+	//printf("after moveagents");
 	moveAgent(agentsList, numAgents, undirectedGraph);
-	printf("after moveagents");
+	//printf("after moveagents");
 	updateInfection(undirectedGraph); 
 	//removeAgentFromNode(undirectedGraph, 0, &agentsList[0]);
         //showGraph(undirectedGraph);
@@ -55,10 +55,10 @@ int main(int argc, char *argv[]){
 	//run 5ever
 
 	// test to see if node infection counter is working
-       	showGraph(undirectedGraph); 
-        for (int i = 0; i < NAGENTS; i++) {
-                printf("isInfected: %d  currentNode: %d\n", agentsList[i].isInfected, agentsList[i].currentNode);
-        }   
+//       	showGraph(undirectedGraph); 
+   //     for (int i = 0; i < NAGENTS; i++) {
+ //               printf("isInfected: %d  currentNode: %d\n", agentsList[i].isInfected, agentsList[i].currentNode);
+     //   }   
 	freeAgents(agentsList);
 	freeGraph(undirectedGraph);
 	return 0;
