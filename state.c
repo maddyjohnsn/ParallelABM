@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/stat.h>
 #include "state.h"
 #include "agent.h"
 
@@ -160,7 +161,10 @@ void freeGraph(struct Graph* graph) {
 // each time it is called it will write the data from the graph at that instant, and either
 // append to an existing file or create a new file
 void writeData(struct Graph* graph, char *outputFile) {
-
+	// used to check if file exists
+	struct stat buffer;
+	// init node_file
+	FILE *node_file = NULL;
 	//need to check if file exists yet
 
 	// if it does not, open in write mode
@@ -170,13 +174,26 @@ void writeData(struct Graph* graph, char *outputFile) {
 	// before and after each chunk of data from one graph snapshot, place a special seperator charater (maybe %! or something).
 	// this is so we can split on that character when reading the data to create the animation
 	
-	FILE *node_file = fopen(outputFile, "w");
-	if (node_file == NULL) {
-        	perror("Error opening nodes file");
-        	return;
-    	}
-
+	// if file exists, open in append mode
+	if (stat(outputFile, &buffer) == 0) {
+                node_file = fopen(outputFile, "a");
+                if (node_file == NULL) {
+                        perror("Error opening nodes file");
+                        return;
+                }   
+	}
+	// check if file exists, if not, open in write mode
+	if (stat(outputFile, &buffer) == -1) {	
+		node_file = fopen(outputFile, "w");
+		if (node_file == NULL) {
+			perror("Error opening nodes file");
+			return;
+		}
 	fprintf(node_file, "(nodeID, percentInfected), edges\n");
+	// special character to indicate beginning of data
+	fprintf(node_file, "%!\n");
+	}
+
 	for (int i = 0; i<graph->numNodes; i++) {
 		struct Node* node = &graph->nodes[i];
 		double percentInfected = (double) node->numInfected / (double) node->numAgents;
@@ -191,5 +208,7 @@ void writeData(struct Graph* graph, char *outputFile) {
 		}
 		fprintf(node_file, "\n");
 	}
+	// special character to indicate end  of data
+        fprintf(node_file, "%!\n");
 	fclose(node_file);
 }

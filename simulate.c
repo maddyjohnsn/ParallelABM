@@ -67,6 +67,7 @@ void simulateDay(int days, struct Graph* graph,int numAgents, struct  Agent* age
 	for(int i = 0; i<days; i++){
 		moveAgent(agents, numAgents, graph);
 		updateInfection(graph);
+		writeData(graph, "multiDayOutput");
 	}
 
 
