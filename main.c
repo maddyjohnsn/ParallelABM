@@ -4,6 +4,7 @@
 
 int main(int argc, char *argv[]){
 
+	//use the right arguments
 	int err;
     	if(argc!=3 ) {
         	printf("Missing the first argument:  number of agents to create\n");
@@ -11,19 +12,24 @@ int main(int argc, char *argv[]){
 		return 1;
     	}
 
+
+
 	int NAGENTS = atoi(argv[1]);
 	int NNODES = atoi(argv[2]);
 
+
+	//make graph and agents
         struct Graph* undirectedGraph = createGraph(NNODES);
-
         addRingEdges(undirectedGraph, 3);
-
         Agent* agentsList = makeAgent(undirectedGraph, NAGENTS);
+	
+	//add agents to nodes
 	for (int i = 0; i< NAGENTS; i++) {
 		addAgentToNode(undirectedGraph, i%NNODES, &agentsList[i]);
 	}
 	int numAgents = NAGENTS; 
-
+	
+	//add agent dispositions
 	agentDisposition(agentsList, NAGENTS);
 
         showGraph(undirectedGraph);
@@ -41,6 +47,12 @@ int main(int argc, char *argv[]){
         }   
 	moveAgent(agentsList, numAgents, undirectedGraph);
 	updateInfection(undirectedGraph); 
+	//take one step and update infection
+	moveAgent(agentsList, numAgents, undirectedGraph);
+	updateInfection(undirectedGraph); 
+	
+	
+	//free memory
 	freeAgents(agentsList);
 	freeGraph(undirectedGraph);
 	return 0;
