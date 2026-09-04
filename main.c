@@ -34,6 +34,21 @@ int main(int argc, char *argv[]){
 	//add agent dispositions
 	agentDisposition(agentsList, NAGENTS);
 
+        showGraph(undirectedGraph);
+        for (int i = 0; i < NAGENTS; i++) {
+                printf("isInfected: %d  currentNode: %d\n", agentsList[i].isInfected, agentsList[i].currentNode);
+                printf("isInfected: %d  currentNode: %d    disposition: %d\n", agentsList[i].isInfected, agentsList[i].currentNode, agentsList[i].disposition);
+	}
+	writeData(undirectedGraph, "testOutput.csv");	
+	moveAgent(agentsList, numAgents, undirectedGraph);
+	updateInfection(undirectedGraph);
+	writeData(undirectedGraph, "testOutput1step.csv"); 
+       	showGraph(undirectedGraph); 
+        for (int i = 0; i < NAGENTS; i++) {
+                printf("isInfected: %d  currentNode: %d\n", agentsList[i].isInfected, agentsList[i].currentNode);
+        }   
+	moveAgent(agentsList, numAgents, undirectedGraph);
+	updateInfection(undirectedGraph); 
 	//take one step and update infection
 	moveAgent(agentsList, numAgents, undirectedGraph);
 	updateInfection(undirectedGraph); 
