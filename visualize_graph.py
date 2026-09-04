@@ -1,74 +1,119 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-import csv
-
+from matplotlib.animation import FuncAnimation
 
 # need to change this so that it seperates each chunk of graph data into their own node and edge data to pass to visualize().
 def readData(filename):
-
-	nodesInfectionRates = {}
-	edges = []
+	dataList = []
+	# open file
 	with open(filename, "r") as file:
+		# skip header
 		next(file)
-		for line in file:
+		data = file.read()
+		#split into graphs on seperator char
+		graphs = data.split("%!")
+		
+		# loop through each graph
+		for graph in graphs:
+			# lists for graph data
+			nodesInfectionRates = {}
+			edges = []
+			# loop through lines of each graph
+			for line in graph.splitlines():
+				# if line is empty, skiiip it
+				if not line.strip():
+					continue
+				lineParts = line.strip().split(";")
+				
+				# get node data
+				nodeData = lineParts[0].strip("()")
+				nodeID, infectionRate = nodeData.split(",")
+				nodeID = int(nodeID.strip())
+				infectionRate = float(infectionRate.strip())
+				# add node data to dict
+				nodesInfectionRates[nodeID] = infectionRate
+				# get edge data
+				for i in range(1, len(lineParts)):
+					edgeData = lineParts[i].strip("()")
+					source, target = edgeData.split(",")
+					source = int(source.strip())
+					target = int(target.strip())
+					# add to edges list
+					edges.append((source,target))
+				# add node data and edges to data list
+				dataList.append((nodesInfectionRates, edges))	
+	# return the data			
+	return dataList
 
-			lineParts = line.strip().split(";")
-
-			nodeData = lineParts[0].strip("()")
-			nodeID, infectionRate = nodeData.split(",")
-			nodeID = int(nodeID.strip())
-			infectionRate = float(infectionRate.strip())
-
-			nodesInfectionRates[nodeID] = infectionRate
-			for i in range(1, len(lineParts)):
-				edgeData = lineParts[i].strip("()")
-				source, target = edgeData.split(",")
-				source = int(source.strip())
-				target = int(target.strip())
-	
-				edges.append((source,target))
-
-	return nodesInfectionRates, edges
-
-nodesInfectionRates, edges = readData("testOutput1step.csv")
-
+data = readData("multiDayOutput")
 
 # need to change this so that it looks at multiple graph snapshots and creates animation that shows infection spread. 
-def visualize(nodesAndIR, edges):
+def visualize(data):
+	
+	nodesAndIR, edges = data[0]
+	# make graph
 	graph = nx.Graph()
 	graph.add_edges_from(edges)
-	pos = nx.spring_layout(graph)
-	for i in range(0, len(graph.nodes)):
-		graph.nodes[i]["infectionRate"] = nodesAndIR[i]
 
-	infection = [graph.nodes[node]["infectionRate"] for node in graph.nodes]
- 
-	nx.draw(
-		graph,
-		node_color = infection,
-		node_size=500,
+	pos = nx.spring_layout(graph, seed = 42)
+
+	fig, ax = plt.subplots()
+	
+	# make colorbar
+	cb = plt.cm.ScalarMappable(
 		cmap=plt.cm.Reds,
-		vmin=0,
-		vmax=1,
-		edge_color = "gray",
-		width = 2,
-		with_labels = True,
-		font_size = 12,
-		font_weight = "bold")
-	plt.colorbar(
-	plt.cm.ScalarMappable(cmap=plt.cm.Reds, norm=plt.Normalize(0, 1)),label="Infection rate",shrink=0.7
+		norm=plt.Normalize(0, 1)
 	)
-	plt.savefig("infection_graph.png")
+
+	plt.colorbar(
+		cb,
+		ax=ax,
+		label="Infection rate",
+		shrink=0.7
+	)
+
+	# this is a built in function with animation that makes the frame update with new graph data from each day
+	def update(frame):
+		ax.clear()
+		nodesAndIR, edges = data[frame]
+		infection = [
+			nodesAndIR.get(node, 0.0)
+			for node in graph.nodes
+		]
+ 
+		nx.draw(
+			graph,
+			pos = pos,
+			ax = ax,
+			node_color = infection,
+			node_size=500,
+			cmap=plt.cm.Reds,
+			vmin=0,
+			vmax=1,
+			edge_color = "gray",
+			width = 2,
+			with_labels = True,
+			font_size = 12,
+			font_weight = "bold")
+
+		ax.set_title(f"Day {frame}")
+	# animation function
+	ani = FuncAnimation (
+		fig, 
+		update,
+		frames = len(data),
+		interval = 500, 
+		repeat = True
+	)
+	
+	# save it
+	ani.save("infection.gif", writer="pillow", fps=2)
+
+visualize(data)
 
 
-visualize(nodesInfectionRates, edges)
 
 
 
 
-
-
-print(nodesInfectionRates)
-print()	
-print(edges)
 		

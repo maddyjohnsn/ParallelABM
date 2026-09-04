@@ -165,15 +165,6 @@ void writeData(struct Graph* graph, char *outputFile) {
 	struct stat buffer;
 	// init node_file
 	FILE *node_file = NULL;
-	//need to check if file exists yet
-
-	// if it does not, open in write mode
-
-	// if it does, open in append mode
-
-	// before and after each chunk of data from one graph snapshot, place a special seperator charater (maybe %! or something).
-	// this is so we can split on that character when reading the data to create the animation
-	
 	// if file exists, open in append mode
 	if (stat(outputFile, &buffer) == 0) {
                 node_file = fopen(outputFile, "a");
@@ -194,9 +185,13 @@ void writeData(struct Graph* graph, char *outputFile) {
 	fprintf(node_file, "%!\n");
 	}
 
+	// Loop through nodes and write to file
 	for (int i = 0; i<graph->numNodes; i++) {
 		struct Node* node = &graph->nodes[i];
-		double percentInfected = (double) node->numInfected / (double) node->numAgents;
+		double percentInfected;
+		if (node->numAgents > 0) {
+			 percentInfected = (double) node->numInfected / (double) node->numAgents;
+		}
 		fprintf(node_file, "(%d, %.2f);", i, percentInfected);
 	
 		for (int j = 0; j<node->numNeighbors; j++) {
