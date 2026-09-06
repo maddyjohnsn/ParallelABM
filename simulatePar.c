@@ -2,6 +2,7 @@
 #include "agent.h"
 #include "simulate.h"
 #include <string.h>
+#include <omp.h>
 
 //will go through the Graph updating agent infection
 void updateInfection(struct Graph* graph){
@@ -14,6 +15,7 @@ void updateInfection(struct Graph* graph){
 		
 		
 		// in each node loop through agents in that node
+		#pragma omp parallel for
 		for (int j = 0; j < node->numAgents; j++) {
 			if (node->agentsInNode[j]->isInfected == true) {
 				continue;
@@ -23,10 +25,15 @@ void updateInfection(struct Graph* graph){
 			// based on agents predisposition and number of encounters, update infection
 			if (node->agentsInNode[j]->disposition == true && node->agentsInNode[j]->infectedEncounters >= 10) {
 				node->agentsInNode[j]->isInfected = true;
+				//data racing
+				#pragma omp atomic
 				node->numInfected++; 
 			}
 			if (node->agentsInNode[j]->disposition == false && node->agentsInNode[j]->infectedEncounters >= 15) {
 				node->agentsInNode[j]->isInfected = true;
+				
+				//data racing
+                                #pragma omp atomic
 				node->numInfected++;
 			}
 		}

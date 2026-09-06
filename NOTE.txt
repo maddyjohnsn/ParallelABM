@@ -1,0 +1,22 @@
+notes for ABM
+
+day 1. did some analysis on compilation- duh it's slow maybe we can save a main with adding hella agents or something??
+	generated different counts of agents and nodes and moved them 1 day
+
+
+1. look number of infected - get what we'd expect for scaling
+
+2. make some graphs of that
+
+trying today:
+	made some standard agent and graph numbers to change days around (1000 agents 50 nodes and all are infected by day 4 like this Day 0: 50 infected
+Day 1: 174 infected
+Day 2: 672 infected
+Day 3: 976 infected
+Day 4: 1000 infected
+
+
+tried taking out debugging statements to see if that was faster since it was using a for loop and going through every day to check the infection counts but it actually made no difference whatsoever
+
+try to make updateInfection faster- nested for loops looping through each node then another one in each of those nodes going through the agents in each node
+	idea but data racing on the node numinfected ++ 
