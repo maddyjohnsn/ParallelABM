@@ -74,7 +74,7 @@ void simulateDay(int days, struct Graph* graph,int numAgents, struct  Agent* age
 		moveAgent(agents, numAgents, graph);
 		updateInfection(graph);
 		
-		writeData(graph, "multiDayOutput");
+		writeData(graph, "serialOutput");
 
 		//every day we need to increment a counter for num infected and save it
 		//start by summing every infection across all nodes

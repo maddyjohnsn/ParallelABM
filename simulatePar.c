@@ -86,16 +86,10 @@ void simulateDay(int days, struct Graph* graph,int numAgents, struct  Agent* age
 	
 	for(int i = 0; i<days; i++){
 	
-		double t0 = omp_get_wtime();
 		moveAgent(agents, numAgents, graph);
-		double t1 = omp_get_wtime();
 		updateInfection(graph);
-		double t2 = omp_get_wtime();
-
-		moveAgentTotal += (t1 - t0);
-        	updateInfectionTotal += (t2 - t1);
-
-		writeData(graph, "multiDayOutput");
+		
+		writeData(graph, "parallelOutput");
 
 		//every day we need to increment a counter for num infected and save it
 		//start by summing every infection across all nodes
