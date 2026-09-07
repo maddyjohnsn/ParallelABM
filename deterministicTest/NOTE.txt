@@ -1,0 +1,6 @@
+ - deterministicTest.sbatch: a simple file to see if using diff to check serial to parallel files will work
+- determinsticProfile.out: the out file from the sbatch
+- serialOutput: the output file from running the serial version of the code
+- parallel output: the output file from running the parallel version of the code
+
+note: if running multiple versions of the code against one another for testing, you will need to run them in subdirectories of this directory so that the output files don't get overwritten

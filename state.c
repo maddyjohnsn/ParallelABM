@@ -188,7 +188,7 @@ void writeData(struct Graph* graph, char *outputFile) {
 	// Loop through nodes and write to file
 	for (int i = 0; i<graph->numNodes; i++) {
 		struct Node* node = &graph->nodes[i];
-		double percentInfected;
+		double percentInfected = 0.0;
 		if (node->numAgents > 0) {
 			 percentInfected = (double) node->numInfected / (double) node->numAgents;
 		}
