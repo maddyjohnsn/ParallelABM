@@ -1,0 +1,131 @@
+Starting ABM
+10 5
+
+real	0m0.003s
+user	0m0.002s
+sys	0m0.000s
+100 50
+
+real	0m0.002s
+user	0m0.001s
+sys	0m0.000s
+1000 500
+
+real	0m0.003s
+user	0m0.002s
+sys	0m0.000s
+10000 5000
+
+real	0m0.011s
+user	0m0.005s
+sys	0m0.005s
+100000 50000
+
+real	0m0.534s
+user	0m0.517s
+sys	0m0.016s
+1000000 500000
+
+real	0m50.178s
+user	0m50.007s
+sys	0m0.168s
+10000000 5000000
+
+real	83m51.996s
+user	83m50.020s
+sys	0m1.928s
+100000000 50000000
+/var/spool/slurm/job01182/slurm_script: line 32: 18845 Segmentation fault      (core dumped) ./main 100000000 50000000
+
+real	1m4.054s
+user	0m20.227s
+sys	0m43.812s
+1 5000
+
+real	0m0.014s
+user	0m0.000s
+sys	0m0.009s
+10 5000
+
+real	0m0.003s
+user	0m0.002s
+sys	0m0.000s
+100 5000
+
+real	0m0.003s
+user	0m0.002s
+sys	0m0.000s
+1000 5000
+
+real	0m0.004s
+user	0m0.000s
+sys	0m0.002s
+10000 5000
+
+real	0m0.010s
+user	0m0.004s
+sys	0m0.004s
+100000 5000
+
+real	0m0.516s
+user	0m0.510s
+sys	0m0.004s
+1000000 5000
+Cannot Add Agent: Number of agents in a given node cannot exceed 100 agents
+
+real	0m0.030s
+user	0m0.023s
+sys	0m0.004s
+10000000 5000
+Cannot Add Agent: Number of agents in a given node cannot exceed 100 agents
+
+real	0m0.142s
+user	0m0.097s
+sys	0m0.043s
+100000000 5000
+Cannot Add Agent: Number of agents in a given node cannot exceed 100 agents
+
+real	0m1.236s
+user	0m0.849s
+sys	0m0.385s
+100 1
+
+real	0m0.004s
+user	0m0.001s
+sys	0m0.000s
+100 10
+
+real	0m0.003s
+user	0m0.001s
+sys	0m0.000s
+100 100
+
+real	0m0.004s
+user	0m0.001s
+sys	0m0.000s
+100 1000
+
+real	0m0.003s
+user	0m0.002s
+sys	0m0.000s
+100 10000
+
+real	0m0.006s
+user	0m0.000s
+sys	0m0.005s
+100 100000
+
+real	0m0.046s
+user	0m0.013s
+sys	0m0.031s
+100 1000000
+
+real	0m0.444s
+user	0m0.148s
+sys	0m0.293s
+100 10000000
+
+real	0m5.210s
+user	0m1.592s
+sys	0m3.616s
+Finished ABM
