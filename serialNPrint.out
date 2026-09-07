@@ -1,0 +1,47 @@
+Starting serialNPrint
+100
+
+real	0m0.084s
+user	0m0.021s
+sys	0m0.004s
+500
+
+real	0m0.397s
+user	0m0.075s
+sys	0m0.042s
+1000
+
+real	0m0.770s
+user	0m0.168s
+sys	0m0.069s
+5000
+
+real	0m3.994s
+user	0m0.850s
+sys	0m0.312s
+10000
+
+real	0m7.471s
+user	0m1.705s
+sys	0m0.641s
+50000
+
+real	0m35.914s
+user	0m8.336s
+sys	0m2.660s
+100000
+
+real	1m7.896s
+user	0m17.379s
+sys	0m4.279s
+500000
+
+real	5m53.143s
+user	1m20.254s
+sys	0m25.081s
+1000000
+
+real	11m10.105s
+user	2m32.449s
+sys	1m3.774s
+Finished serialNPrint
