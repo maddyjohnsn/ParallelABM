@@ -20,3 +20,9 @@ gcc -fopenmp -O3 mainBaseDays.c state.c agent.c simulatePar2.c -o parallel_v2_O3
 
 # serial graph restructure
 gcc mainBaseDays_v2.c state_v2.c agent_v2.c simulate_v2.c -o serial_v2                                                                                  
+
+# parallel v3
+gcc -fopenmp mainBaseDays.c state.c agent.c simulatePar3.c -o parallel_v3
+
+# parallel v4
+gcc -fopenmp mainBaseDays.c state.c agent.c simulatePar4.c -o parallel_v4
