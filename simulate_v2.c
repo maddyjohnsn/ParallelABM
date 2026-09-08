@@ -1,6 +1,6 @@
 #include "state_v2.h"
 #include "agent_v2.h"
-#include "simulate.h"
+#include "simulate_v2.h"
 #include <string.h>
 
 //will go through the Graph updating agent infection
@@ -58,15 +58,9 @@ void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
 		}
 		//remove agent from node
 		removeAgentFromNode(graph, current, agent);
-		//add agent to different node
+		//add agent to different node		
 		addAgentToNode(graph, next, agent);
-		for (int i = 0; i < 20; i++) {
-    printf("Agent %d: currentNode=%d\n",
-           i,
-           agentsList[i].currentNode);
-}	
 	}
-
 }
 
 void simulateDay(int days, struct Graph* graph,int numAgents, struct  Agent* agents, int* dailyInfectedCounts){

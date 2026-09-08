@@ -1,6 +1,6 @@
 #include "state_v2.h"
 #include "agent_v2.h"
-#include "simulate.h"
+#include "simulate_v2.h"
 
 int main(int argc, char *argv[]){
 

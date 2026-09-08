@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
-#include "state.h"
-#include "agent.h"
+#include "state_v2.h"
+#include "agent_v2.h"
 
 
 // creates a graph structure: initializes a list of lists of neighbors, 
