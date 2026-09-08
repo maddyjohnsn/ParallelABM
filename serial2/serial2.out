@@ -1,0 +1,74 @@
+Starting serial2
+rm: cannot remove 'serialOutput': No such file or directory
+rm: cannot remove 'serial_v2Output': No such file or directory
+-------- 1000 Days --------
+SERIAL RESULTS
+
+real	0m0.768s
+user	0m0.156s
+sys	0m0.082s
+
+SERIAL_V2 RESULTS
+Cannot Add Agent: Number of agents in a given node cannot exceed 100 agents
+
+real	0m0.003s
+user	0m0.000s
+sys	0m0.002s
+Verifying Results...
+diff: ./serial_v2Output: No such file or directory
+Serial and serial_v2 output files are DIFFERENT
+
+rm: cannot remove 'serial_v2Output': No such file or directory
+-------- 10000 Days --------
+SERIAL RESULTS
+
+real	0m6.438s
+user	0m1.557s
+sys	0m0.762s
+
+SERIAL_V2 RESULTS
+Cannot Add Agent: Number of agents in a given node cannot exceed 100 agents
+
+real	0m0.003s
+user	0m0.001s
+sys	0m0.000s
+Verifying Results...
+diff: ./serial_v2Output: No such file or directory
+Serial and serial_v2 output files are DIFFERENT
+
+rm: cannot remove 'serial_v2Output': No such file or directory
+-------- 100000 Days --------
+SERIAL RESULTS
+
+real	1m7.505s
+user	0m14.685s
+sys	0m8.319s
+echo SERIAL_V2 RESULTS
+Cannot Add Agent: Number of agents in a given node cannot exceed 100 agents
+
+real	0m0.008s
+user	0m0.004s
+sys	0m0.000s
+Verifying Results...
+diff: ./serial_v2Output: No such file or directory
+Serial and serial_v2 output files are DIFFERENT
+
+rm: cannot remove 'serial_v2Output': No such file or directory
+-------- 1000000 Days --------
+SERIAL RESULTS
+
+real	11m55.256s
+user	2m51.952s
+sys	1m1.311s
+
+SERIAL_V2 RESULTS
+Cannot Add Agent: Number of agents in a given node cannot exceed 100 agents
+
+real	0m0.008s
+user	0m0.000s
+sys	0m0.004s
+Verifying Results...
+diff: ./serial_v2Output: No such file or directory
+Serial and serial_v2 output files are DIFFERENT
+
+Finished Parallel1
