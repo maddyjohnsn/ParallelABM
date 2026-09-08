@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --job-name=ABM
 #SBATCH --partition=Mem500
-#SBATCH --output=parallel2.out
-#SBATCH --error=parallel2.out
+#SBATCH --output=parallel2_O3.out
+#SBATCH --error=parallel2_O3.out
 #SBATCH --exclusive
 
-echo "Starting parallel2"
+echo "Starting parallel2_O3"
 
 
 rm serialOutput
@@ -85,5 +85,4 @@ else
 fi
 
 echo ""
-echo "Finished Parallel1"
-
+echo "Finished Parallel2_O3"

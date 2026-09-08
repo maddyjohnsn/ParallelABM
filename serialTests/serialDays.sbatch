@@ -4,7 +4,6 @@
 #SBATCH --output=serial.out
 #SBATCH --error=serial.out
 #SBATCH --exclusive
-
 echo "Starting serial"
 
 
