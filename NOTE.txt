@@ -19,4 +19,9 @@ Day 4: 1000 infected
 tried taking out debugging statements to see if that was faster since it was using a for loop and going through every day to check the infection counts but it actually made no difference whatsoever
 
 try to make updateInfection faster- nested for loops looping through each node then another one in each of those nodes going through the agents in each node
-	idea but data racing on the node numinfected ++ 
+	idea but data racing on the node numinfected ++
+
+
+look at how structs are happening in memory- wants things to start at particular addresses in memory. want to start with big things. - maybe clean up graph and take some stuff out of what we're doing
+
+look at taking out agent ids 
