@@ -60,7 +60,11 @@ void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
 		removeAgentFromNode(graph, current, agent);
 		//add agent to different node
 		addAgentToNode(graph, next, agent);
-			
+		for (int i = 0; i < 20; i++) {
+    printf("Agent %d: currentNode=%d\n",
+           i,
+           agentsList[i].currentNode);
+}	
 	}
 
 }
