@@ -43,16 +43,17 @@ int main(int argc, char *argv[]){
 
 
 	simulateDay(DAYS, undirectedGraph, NAGENTS, agentsList, dailyInfectedCounts);	
-	
 
-	//for (int i = 0; i < DAYS; i++) {
- 
-		
-	//	printf("Day %d: %d infected\n", i, dailyInfectedCounts[i]);
-	//}	
 
-	//printf("%d infected\n",  dailyInfectedCounts[DAYS - 1]);
+        FILE *numInfectedAtEnd = NULL;    
+        numInfectedAtEnd = fopen("numInfectedAtEnd.txt", "a");
+        if (numInfectedAtEnd == NULL) {
+                printf("Error opening file!\n");
+                return 1;
+    }   
+	fprintf(numInfectedAtEnd, "%d\n", dailyInfectedCounts[DAYS-1]);
 
+        fclose(numInfectedAtEnd); 
 
 	//free memory
 	free(dailyInfectedCounts);

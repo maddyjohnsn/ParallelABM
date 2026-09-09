@@ -1,0 +1,64 @@
+Starting Verification
+
+rm: cannot remove 'numInfectedAtEnd.txt': No such file or directory
+-------- SERIAL_V1 RESULTS (everything compared against these..) -------
+infectionsAtEnd:  [929, 929, 929, 929, 929]
+Mean, Stdev below:
+929 0.0
+-------- PARALELL_V1 RESULTS -------
+infectionsAtEnd:  [929, 929, 929, 929, 929]
+Mean, Stdev below:
+929 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: 0
+
+-------- PARALELL_V2 RESULTS -------
+infectionsAtEnd:  [1000, 1000, 1000, 1000, 1000]
+Mean, Stdev below:
+1000 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: -71
+
+-------- PARALELL_V3 RESULTS -------
+infectionsAtEnd:  [1000, 1000, 1000, 1000, 1000]
+Mean, Stdev below:
+1000 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: -71
+
+-------- PARALELL_V4 RESULTS -------
+infectionsAtEnd:  [1000, 1000, 1000, 1000, 1000]
+Mean, Stdev below:
+1000 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: -71
+
+-------- SERIAL_V1_O3 RESULTS -------
+infectionsAtEnd:  [929, 929, 929, 929, 929]
+Mean, Stdev below:
+929 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: 0
+
+-------- PARALLEL_V1_O3 RESULTS -------
+infectionsAtEnd:  [929, 929, 929, 929, 929]
+Mean, Stdev below:
+929 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: 0
+
+-------- PARALLEL_V2_O3 RESULTS -------
+infectionsAtEnd:  [1000, 1000, 1000, 1000, 1000]
+Mean, Stdev below:
+1000 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: -71
+
+-------- SERIAL_V2 (graph restructure) RESULTS -------
+infectionsAtEnd:  [929, 929, 929, 929, 929]
+Mean, Stdev below:
+929 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: 0
+
+Ending Verification

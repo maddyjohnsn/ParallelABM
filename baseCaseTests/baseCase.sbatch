@@ -204,4 +204,6 @@ rm serialOutput
 echo "100 10000000"
 time ../serial_v1 100 10000000
 
+rm serialOutput
+
 echo "Finished ABM"

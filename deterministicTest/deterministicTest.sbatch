@@ -28,3 +28,6 @@ if diff -q ./serialOutput ./parallelOutput > /dev/null; then
 else
 	echo "Serial and parallel output files are DIFFERENT"
 fi
+
+rm serialOutput
+rm parallelOutput

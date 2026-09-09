@@ -84,5 +84,8 @@ else
         echo "Serial and parallel output files are DIFFERENT"
 fi
 
+rm serialOutput
+rm parallelOutput
+
 echo ""
 echo "Finished Parallel2_O3"

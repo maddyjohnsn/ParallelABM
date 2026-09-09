@@ -1,6 +1,6 @@
-#include "state.h"
-#include "agent.h"
-#include "simulate.h"
+#include "state_v2.h"
+#include "agent_v2.h"
+#include "simulate_v2.h"
 
 int main(int argc, char *argv[]){
 
@@ -27,7 +27,6 @@ int main(int argc, char *argv[]){
 
 	//make graph and agents
         struct Graph* undirectedGraph = createGraph(NNODES);
-        addRingEdges(undirectedGraph, 3);
         Agent* agentsList = makeAgent(undirectedGraph, NAGENTS);
 	
 	//add agents to nodes
@@ -53,8 +52,19 @@ int main(int argc, char *argv[]){
 
 	//printf("%d infected\n",  dailyInfectedCounts[DAYS - 1]);
 
-
 	//free memory
+
+	       FILE *numInfectedAtEnd = NULL;    
+        numInfectedAtEnd = fopen("numInfectedAtEnd.txt", "a");
+        if (numInfectedAtEnd == NULL) {
+                printf("Error opening file!\n");
+                return 1;
+    }   
+        fprintf(numInfectedAtEnd, "%d\n", dailyInfectedCounts[DAYS-1]);
+
+        fclose(numInfectedAtEnd);
+
+
 	free(dailyInfectedCounts);
 	freeAgents(agentsList);
 	freeGraph(undirectedGraph);

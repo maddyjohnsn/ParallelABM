@@ -43,4 +43,6 @@ rm serialOutput
 echo "1000000"
 time ../serial_v1 1000 50 1000000
 
+rm serialOutput
+
 echo "Finished serial"
