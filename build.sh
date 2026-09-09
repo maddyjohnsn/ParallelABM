@@ -15,6 +15,9 @@ gcc -fopenmp mainBaseDays.c state.c agent.c simulatePar3.c -o parallel_v3
 # parallel v4
 gcc -fopenmp mainBaseDays.c state.c agent.c simulatePar4.c -o parallel_v4
 
+# parallel v5 
+gcc -fopenmp mainBaseDays.c state.c agent.c simulatePar5.c -o parallel_v5
+
 # initial serial -03
 gcc -O3 mainBaseDays.c state.c agent.c simulate.c -o serial_v1_O3
 
