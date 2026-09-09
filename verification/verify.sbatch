@@ -93,6 +93,23 @@ echo "Compare Mean difference with Serial: $meanDifference"
 rm numInfectedAtEnd.txt
 echo ""
 
+echo "-------- PARALELL_V5 RESULTS -------"
+./parallel_v5 1000 500 1000
+./parallel_v5 1000 500 1000
+./parallel_v5 1000 500 1000
+./parallel_v5 1000 500 1000
+./parallel_v5 1000 500 1000
+python3 calculateStdev.py
+compareResults=$(python3 calculateStdev.py | tail -n 1)
+read compareMean compareStdev <<< "$compareResults"
+meanDifference=$((serialMean - compareMean))
+stdevDifference=$(awk -v a="$serialStdev" -v b="$compareStdev" 'BEGIN {print a - b}')
+echo "Compare Stdev difference with Serial: $stdevDifference"
+echo "Compare Mean difference with Serial: $meanDifference"
+
+rm numInfectedAtEnd.txt
+echo ""
+
 echo "-------- SERIAL_V1_O3 RESULTS -------"
 ./serial_v1_O3 1000 500 1000
 ./serial_v1_O3 1000 500 1000

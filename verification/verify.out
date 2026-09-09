@@ -33,6 +33,13 @@ Mean, Stdev below:
 Compare Stdev difference with Serial: 0
 Compare Mean difference with Serial: -71
 
+-------- PARALELL_V5 RESULTS -------
+infectionsAtEnd:  [1000, 1000, 1000, 1000, 1000]
+Mean, Stdev below:
+1000 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: -71
+
 -------- SERIAL_V1_O3 RESULTS -------
 infectionsAtEnd:  [929, 929, 929, 929, 929]
 Mean, Stdev below:
