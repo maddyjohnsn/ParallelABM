@@ -45,11 +45,11 @@ int main(int argc, char *argv[]){
 	simulateDay(DAYS, undirectedGraph, NAGENTS, agentsList, dailyInfectedCounts);	
 	
 
-	//for (int i = 0; i < DAYS; i++) {
+//	for (int i = 0; i < DAYS; i++) {
  
-		
-	//	printf("Day %d: %d infected\n", i, dailyInfectedCounts[i]);
-	//}	
+//		
+//		printf("Day %d: %d infected\n", i, dailyInfectedCounts[i]);
+//	}	
 
 	//printf("%d infected\n",  dailyInfectedCounts[DAYS - 1]);
 
