@@ -18,6 +18,7 @@ struct Graph* createGraph(int numNodes) {
 	// and set their numNeighbors, numAgents, and numInfected to 0
 	for (int i = 0; i < numNodes; i++) {
         	newGraph->nodes[i].id = i;
+		newGraph->nodes[i].numNeighbors = 0;
 		newGraph->nodes[i].numAgents = 0;
 		newGraph->nodes[i].numInfected = 0;
     	}

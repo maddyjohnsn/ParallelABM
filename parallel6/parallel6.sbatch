@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=ABM
-#SBATCH --partition=Mem500
+#SBATCH --partition=Cpu40
 #SBATCH --output=parallel6.out
 #SBATCH --error=parallel6.out
 #SBATCH --exclusive

@@ -1,6 +1,6 @@
 #include "state.h"
 #include "agent.h"
-#include "simulate.h"
+#include "simulatePar6.h"
 #include <string.h>
 #include <omp.h>
 

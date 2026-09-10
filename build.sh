@@ -3,6 +3,9 @@
 # initial serial
 gcc mainBaseDays.c state.c agent.c simulate.c -o serial_v1
 
+# bad parallel
+gcc -fopenmp mainBaseDays.c state.c agent.c simulatePar0.c -o parallel_v0
+
 # initial parallel
 gcc -fopenmp mainBaseDays.c state.c agent.c simulatePar.c -o parallel_v1
 
@@ -16,10 +19,10 @@ gcc -fopenmp mainBaseDays.c state.c agent.c simulatePar3.c -o parallel_v3
 gcc -fopenmp mainBaseDays.c state.c agent.c simulatePar4.c -o parallel_v4
 
 # parallel v5 
-gcc -fopenmp mainBaseDays.c state.c agent.c simulatePar5.c -o parallel_v5
+gcc -fopenmp mainBaseDays6.c state.c agent.c simulatePar5.c -o parallel_v5
 
 # parallel v6 
-gcc -fopenmp mainBaseDays.c state.c agent.c simulatePar6.c -o parallel_v6
+gcc -fopenmp mainBaseDays6.c state.c agent.c simulatePar6.c -o parallel_v6
 
 # initial serial -03
 gcc -O3 mainBaseDays.c state.c agent.c simulate.c -o serial_v1_O3
