@@ -2,6 +2,9 @@
 #include "agent.h"
 #include "simulate.h"
 #include <string.h>
+#include <stdlib.h>
+
+#define SHARED_SEED 42
 
 //will go through the Graph updating agent infection
 void updateInfection(struct Graph* graph){
@@ -37,7 +40,10 @@ void updateInfection(struct Graph* graph){
 void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
 	int *directions = malloc(numAgents * sizeof(int));
 	for (int i = 0; i < numAgents; i++) {
-		directions[i] = rand() % 2;
+                unsigned int seed = SHARED_SEED + i;
+                directions[i] = rand_r(&seed) % 2;
+	
+	//	directions[i] = rand() % 2;
 	}
 	
 	for (int i = 0; i< numAgents; i++){
@@ -81,7 +87,7 @@ void simulateDay(int days, struct Graph* graph,int numAgents, struct  Agent* age
 		moveAgent(agents, numAgents, graph);
 		updateInfection(graph);
 		
-		writeData(graph, "serialOutput");
+	//	writeData(graph, "serialOutput");
 
 		//every day we need to increment a counter for num infected and save it
 		//start by summing every infection across all nodes

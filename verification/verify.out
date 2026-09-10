@@ -2,48 +2,48 @@ Starting Verification
 
 rm: cannot remove 'numInfectedAtEnd.txt': No such file or directory
 -------- SERIAL_V1 RESULTS (everything compared against these..) -------
-infectionsAtEnd:  [256, 256, 256, 256, 256]
+infectionsAtEnd:  [819, 819, 819, 819, 819]
 Mean, Stdev below:
-256 0.0
+819 0.0
 -------- PARALELL_V1 RESULTS -------
 infectionsAtEnd:  [256, 256, 256, 256, 256]
 Mean, Stdev below:
 256 0.0
 Compare Stdev difference with Serial: 0
-Compare Mean difference with Serial: 0
+Compare Mean difference with Serial: 563
 
 -------- PARALELL_V2 RESULTS -------
 infectionsAtEnd:  [256, 256, 256, 256, 256]
 Mean, Stdev below:
 256 0.0
 Compare Stdev difference with Serial: 0
-Compare Mean difference with Serial: 0
+Compare Mean difference with Serial: 563
 
 -------- PARALELL_V3 RESULTS -------
 infectionsAtEnd:  [256, 256, 256, 256, 256]
 Mean, Stdev below:
 256 0.0
 Compare Stdev difference with Serial: 0
-Compare Mean difference with Serial: 0
+Compare Mean difference with Serial: 563
 
 -------- PARALELL_V4 RESULTS -------
-infectionsAtEnd:  [256, 256, 256, 256, 256]
+infectionsAtEnd:  [819, 819, 819, 819, 819]
 Mean, Stdev below:
-256 0.0
+819 0.0
 Compare Stdev difference with Serial: 0
 Compare Mean difference with Serial: 0
 
 -------- PARALELL_V5 RESULTS -------
-infectionsAtEnd:  [256, 256, 256, 256, 256]
+infectionsAtEnd:  [819, 819, 819, 819, 819]
 Mean, Stdev below:
-256 0.0
+819 0.0
 Compare Stdev difference with Serial: 0
 Compare Mean difference with Serial: 0
 
 -------- PARALELL_V6 RESULTS -------
-infectionsAtEnd:  [256, 256, 256, 256, 256]
+infectionsAtEnd:  [819, 819, 819, 819, 819]
 Mean, Stdev below:
-256 0.0
+819 0.0
 Compare Stdev difference with Serial: 0
 Compare Mean difference with Serial: 0
 
@@ -52,12 +52,12 @@ infectionsAtEnd:  [256, 256, 256, 256, 256]
 Mean, Stdev below:
 256 0.0
 Compare Stdev difference with Serial: 0
-Compare Mean difference with Serial: 0
+Compare Mean difference with Serial: 563
 
 -------- SERIAL_V1_O3 RESULTS -------
-infectionsAtEnd:  [256, 256, 256, 256, 256]
+infectionsAtEnd:  [819, 819, 819, 819, 819]
 Mean, Stdev below:
-256 0.0
+819 0.0
 Compare Stdev difference with Serial: 0
 Compare Mean difference with Serial: 0
 
@@ -66,20 +66,20 @@ infectionsAtEnd:  [256, 256, 256, 256, 256]
 Mean, Stdev below:
 256 0.0
 Compare Stdev difference with Serial: 0
-Compare Mean difference with Serial: 0
+Compare Mean difference with Serial: 563
 
 -------- PARALLEL_V2_O3 RESULTS -------
 infectionsAtEnd:  [256, 256, 256, 256, 256]
 Mean, Stdev below:
 256 0.0
 Compare Stdev difference with Serial: 0
-Compare Mean difference with Serial: 0
+Compare Mean difference with Serial: 563
 
 -------- SERIAL_V2 (graph restructure) RESULTS -------
 infectionsAtEnd:  [256, 256, 256, 256, 256]
 Mean, Stdev below:
 256 0.0
 Compare Stdev difference with Serial: 0
-Compare Mean difference with Serial: 0
+Compare Mean difference with Serial: 563
 
 Ending Verification

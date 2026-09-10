@@ -3,6 +3,9 @@
 #include "simulatePar6.h"
 #include <string.h>
 #include <omp.h>
+#include <stdlib.h>
+
+#define SHARED_SEED 42
 
 //will go through the Graph updating agent infection
 void updateInfection(struct Graph* graph){
@@ -83,11 +86,13 @@ void applyMoves(struct Agent* agents, PendingMove* moves, int numAgents, struct 
 }
 
 void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
-        int *directions = malloc(numAgents * sizeof(int));
 
+	int *directions = malloc(numAgents * sizeof(int));
+	#pragma omp parallel for
         for (int i = 0; i < numAgents; i++) {
-                directions[i] = rand() % 2;
-        }
+        	unsigned int seed = SHARED_SEED + i;
+		directions[i] = rand_r(&seed) % 2;
+	}
 
 
 	//need to use our struct of PendingMove
@@ -109,7 +114,6 @@ void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
 			int next;
 
 			int flip = directions[i];
-			//int flip = rand_r(&random) % 2;
 			//check that movement will not push agent off graph- loop around
 			if (flip == 0 ) { //moveBackwards
 				next = current-1;
