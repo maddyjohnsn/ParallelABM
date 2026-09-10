@@ -1,0 +1,62 @@
+Starting parallel6
+rm: cannot remove 'parallelOutput': No such file or directory
+-------- 1000 Days --------
+SERIAL RESULTS
+
+real	0m0.090s
+user	0m0.087s
+sys	0m0.000s
+
+PARALLEL RESULTS
+
+real	0m0.566s
+user	0m17.208s
+sys	0m0.187s
+Verifying Results...
+diff: ./serialOutput: No such file or directory
+Serial and parallel output files are DIFFERENT
+
+rm: cannot remove 'serialOutput': No such file or directory
+-------- 10000 Days --------
+SERIAL RESULTS
+
+real	0m0.874s
+user	0m0.872s
+sys	0m0.000s
+
+PARALLEL RESULTS
+
+real	0m6.330s
+user	3m13.817s
+sys	0m0.766s
+Verifying Results...
+diff: ./serialOutput: No such file or directory
+Serial and parallel output files are DIFFERENT
+
+rm: cannot remove 'serialOutput': No such file or directory
+-------- 100000 Days --------
+SERIAL RESULTS
+
+real	0m8.830s
+user	0m8.828s
+sys	0m0.000s
+
+PARALLELL RESULTS
+
+real	1m2.528s
+user	31m37.866s
+sys	0m6.592s
+Verifying Results...
+diff: ./serialOutput: No such file or directory
+Serial and parallel output files are DIFFERENT
+
+rm: cannot remove 'serialOutput': No such file or directory
+-------- 1000000 Days --------
+SERIAL RESULTS
+
+real	1m28.269s
+user	1m28.261s
+sys	0m0.004s
+
+PARALLEL RESULTS
+slurmstepd: error: *** JOB 1536 ON node1 CANCELLED AT 2026-09-10T01:48:12 ***

@@ -45,6 +45,7 @@ void applyMoves(struct Agent* agents, PendingMove* moves, int numAgents, struct 
 
 	//need to reset nodes (but in parallel)
 	//should make sure we're never data racing
+	//rebuild from scratch every day
 	#pragma omp parallel for
 	for(int i = 0;i < graph->numNodes; i++){
 		graph->nodes[i].numAgents = 0;
@@ -53,12 +54,13 @@ void applyMoves(struct Agent* agents, PendingMove* moves, int numAgents, struct 
 	}
 
 	//need to put agents in their destination node which we have stored in pending nodes
+	//atoomic capture- 
 	#pragma omp parallel for
 	for(int i = 0;i <numAgents; i++){
 		struct Agent* agent = &agents[moves[i].agentIndex];
 		int dest = moves[i].destinationNode;
 		struct Node* node = &graph->nodes[dest];
-		
+		//this all removes need for add and remove agent- maybe we can save more time with that later
 		//every agent needs a unique spot to go into 
 		int put;
 		//let a node know it's numAgents again
