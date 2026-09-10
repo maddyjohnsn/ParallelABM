@@ -1,3 +1,8 @@
+//new struct that needs to have list of agents and a destination for them
+typedef struct {
+    int agentIndex;
+    int destinationNode;
+} PendingMove;
 
 //will go through the world updating agent
 void updateInfection(struct Graph* graph);

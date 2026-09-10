@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
-#include "state.h"
+#include "state_v2.h"
 
 //this will hold our agent structs
 //

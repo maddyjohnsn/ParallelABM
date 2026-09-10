@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --job-name=ABM
-#SBATCH --partition=Mem500
+#SBATCH --partition=Cpu40
 #SBATCH --output=verify.out
 #SBATCH --error=verify.out
 #SBATCH --exclusive
@@ -103,6 +103,41 @@ echo "-------- PARALELL_V5 RESULTS -------"
 ./parallel_v5 $num_agents $num_nodes $num_days
 ./parallel_v5 $num_agents $num_nodes $num_days
 ./parallel_v5 $num_agents $num_nodes $num_days
+python3 calculateStdev.py
+compareResults=$(python3 calculateStdev.py | tail -n 1)
+read compareMean compareStdev <<< "$compareResults"
+meanDifference=$(awk -v a="$serialMean" -v b="$compareMean" 'BEGIN {print a - b}')
+stdevDifference=$(awk -v a="$serialStdev" -v b="$compareStdev" 'BEGIN {print a - b}')
+echo "Compare Stdev difference with Serial: $stdevDifference"
+echo "Compare Mean difference with Serial: $meanDifference"
+
+rm numInfectedAtEnd.txt
+echo ""
+
+echo "-------- PARALELL_V6 RESULTS -------"
+./parallel_v6 $num_agents $num_nodes $num_days
+./parallel_v6 $num_agents $num_nodes $num_days
+./parallel_v6 $num_agents $num_nodes $num_days
+./parallel_v6 $num_agents $num_nodes $num_days
+./parallel_v6 $num_agents $num_nodes $num_days
+python3 calculateStdev.py
+compareResults=$(python3 calculateStdev.py | tail -n 1)
+read compareMean compareStdev <<< "$compareResults"
+meanDifference=$(awk -v a="$serialMean" -v b="$compareMean" 'BEGIN {print a - b}')
+stdevDifference=$(awk -v a="$serialStdev" -v b="$compareStdev" 'BEGIN {print a - b}')
+echo "Compare Stdev difference with Serial: $stdevDifference"
+echo "Compare Mean difference with Serial: $meanDifference"
+
+
+rm numInfectedAtEnd.txt
+echo ""
+
+echo "-------- PARALELL_V7 RESULTS -------"
+./parallel_v7 $num_agents $num_nodes $num_days
+./parallel_v7 $num_agents $num_nodes $num_days
+./parallel_v7 $num_agents $num_nodes $num_days
+./parallel_v7 $num_agents $num_nodes $num_days
+./parallel_v7 $num_agents $num_nodes $num_days
 python3 calculateStdev.py
 compareResults=$(python3 calculateStdev.py | tail -n 1)
 read compareMean compareStdev <<< "$compareResults"

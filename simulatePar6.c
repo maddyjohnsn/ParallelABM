@@ -83,6 +83,11 @@ void applyMoves(struct Agent* agents, PendingMove* moves, int numAgents, struct 
 }
 
 void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
+        int *directions = malloc(numAgents * sizeof(int));
+
+        for (int i = 0; i < numAgents; i++) {
+                directions[i] = rand() % 2;
+        }
 
 
 	//need to use our struct of PendingMove
@@ -91,10 +96,10 @@ void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
 	PendingMove* moves = malloc(numAgents * sizeof(PendingMove));	
 
 	#pragma omp parallel
-	{
+	
 		//still want random
 		//replacement of random
-		unsigned int random = omp_get_thread_num() + time(NULL); 
+//		unsigned int random = omp_get_thread_num() + time(NULL); 
 	
 		#pragma omp for
 		for (int i = 0; i< numAgents; i++){
@@ -103,7 +108,8 @@ void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
 			int current = agents[i].currentNode;
 			int next;
 
-			int flip = rand_r(&random) % 2;
+			int flip = directions[i];
+			//int flip = rand_r(&random) % 2;
 			//check that movement will not push agent off graph- loop around
 			if (flip == 0 ) { //moveBackwards
 				next = current-1;
@@ -125,10 +131,10 @@ void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
 			moves[i].destinationNode = next;
 			//don't forget to free moves
 		}
-	}
+	
 
 	applyMoves(agents, moves, numAgents, graph);
-
+	free(directions);
 	free(moves);
 
 }
@@ -148,7 +154,7 @@ void simulateDay(int days, struct Graph* graph,int numAgents, struct  Agent* age
 		moveAgent(agents, numAgents, graph);
 		updateInfection(graph);
 
-		writeData(graph, "parallelOutput");
+		//writeData(graph, "parallelOutput");
 
 		//every day we need to increment a counter for num infected and save it
 		//start by summing every infection across all nodes
