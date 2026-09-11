@@ -1,6 +1,7 @@
 #include "state_v2.h"
 #include "agent_v2.h"
 #include "simulate_v2.h"
+#include <TAU.h>
 
 int main(int argc, char *argv[]){
 
@@ -27,6 +28,7 @@ int main(int argc, char *argv[]){
 
 	//make graph and agents
 	//
+	TAU_START("make");
         struct Graph* undirectedGraph = createGraph(NNODES);
         Agent* agentsList = makeAgent(undirectedGraph, NAGENTS);
 	
@@ -41,6 +43,7 @@ int main(int argc, char *argv[]){
 
 	//take steps and update infection
 
+	TAU_STOP("make");
 	simulateDay(DAYS, undirectedGraph, NAGENTS, agentsList, dailyInfectedCounts);	
 	
 

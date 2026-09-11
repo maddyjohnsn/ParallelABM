@@ -1,6 +1,7 @@
-#include "state_v2.h"
-#include "agent_v2.h"
-#include "simulate_v2.h"
+#include "state.h"
+#include "agent.h"
+#include "simulate.h"
+#include <TAU.h>
 
 int main(int argc, char *argv[]){
 
@@ -23,11 +24,11 @@ int main(int argc, char *argv[]){
 	//malloc for dailyinfected rates
 	//
 	int* dailyInfectedCounts = malloc(DAYS*sizeof(int));
-
+	TAU_START("make");
 
 	//make graph and agents
-	//
         struct Graph* undirectedGraph = createGraph(NNODES);
+        addRingEdges(undirectedGraph, 3);
         Agent* agentsList = makeAgent(undirectedGraph, NAGENTS);
 	
 	//add agents to nodes
@@ -41,16 +42,19 @@ int main(int argc, char *argv[]){
 
 	//take steps and update infection
 
+	TAU_STOP("make");
+
 	simulateDay(DAYS, undirectedGraph, NAGENTS, agentsList, dailyInfectedCounts);	
 	
 
 //	for (int i = 0; i < DAYS; i++) {
  
-		
+//		
 //		printf("Day %d: %d infected\n", i, dailyInfectedCounts[i]);
 //	}	
 
-//	printf("%d infected\n",  dailyInfectedCounts[DAYS - 1]);
+	//printf("%d infected\n",  dailyInfectedCounts[DAYS - 1]);
+
 
 	//free memory
 	free(dailyInfectedCounts);

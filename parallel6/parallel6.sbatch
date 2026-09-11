@@ -6,7 +6,6 @@
 #SBATCH --exclusive
 #SBATCH --cpus-per-task=6
 
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 echo "Starting parallel6"
 

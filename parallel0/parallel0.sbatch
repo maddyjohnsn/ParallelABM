@@ -40,12 +40,12 @@ time ../parallel_v0 1000 50 1000000
 
 echo ""
 
-echo "-------- 10000000 Days --------"
+echo "-------- 5000000 Days --------"
 echo "SERIAL RESULTS"
-time ../serial_v1 1000 50 10000000
+time ../serial_v1 1000 50 5000000
 echo ""
 echo "PARALLEL RESULTS"
-time ../parallel_v0 1000 50 10000000
+time ../parallel_v0 1000 50 5000000
 
 
 echo ""
