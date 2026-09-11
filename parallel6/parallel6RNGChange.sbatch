@@ -1,15 +1,14 @@
 #!/bin/bash
 #SBATCH --job-name=ABM
 #SBATCH --partition=Mem500
-#SBATCH --output=parallel4.out
-#SBATCH --error=parallel4.out
+#SBATCH --output=parallel6.out
+#SBATCH --error=parallel6.out
 #SBATCH --exclusive
+#SBATCH --cpus-per-task=6
 
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
-
-
-
-echo "Starting parallel4"
+echo "Starting parallel6"
 
 
 echo "-------- 10000 Days --------"
@@ -17,19 +16,16 @@ echo "SERIAL RESULTS"
 time ../serial_v1 1000 50 10000
 echo ""
 echo "PARALLEL RESULTS"
-time ../parallel_v4 1000 50 10000
-
+time ../parallel_v6 1000 50 10000
 
 echo ""
-
 
 echo "-------- 100000 Days --------"
 echo "SERIAL RESULTS"
 time ../serial_v1 1000 50 100000
 echo ""
 echo "PARALLELL RESULTS"
-time ../parallel_v4 1000 50 100000
-
+time ../parallel_v6 1000 50 100000
 
 echo ""
 
@@ -39,8 +35,7 @@ echo "SERIAL RESULTS"
 time ../serial_v1 1000 50 1000000
 echo ""
 echo "PARALLEL RESULTS"
-time ../parallel_v4 1000 50 1000000
-
+time ../parallel_v6 1000 50 1000000
 
 echo ""
 
@@ -49,9 +44,8 @@ echo "SERIAL RESULTS"
 time ../serial_v1 1000 50 10000000
 echo ""
 echo "PARALLEL RESULTS"
-time ../parallel_v4 1000 50 10000000
-
+time ../parallel_v6 1000 50 10000000
 
 echo ""
+echo "Finished Parallel6"
 
-echo "Finished Parallel4"
