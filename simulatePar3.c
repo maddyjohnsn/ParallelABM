@@ -63,17 +63,14 @@ void destroyNodeLocks(omp_lock_t* locks, int numNodes) {
 	free(locks);
 }
 
-void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph, omp_lock_t* nodeLocks){
-	int *directions = malloc(numAgents * sizeof(int));
 
-        for (int i = 0; i < numAgents; i++) {
-                directions[i] = rand() % 2;
-        }   
+void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph, omp_lock_t* nodeLocks){
+
 	#pragma omp parallel
-	
+	{
 		//replacement of random
-		//unsigned int random = omp_get_thread_num() + time(NULL); 
-	
+		unsigned int random = omp_get_thread_num() + time(NULL);
+
 		#pragma omp for
 		for (int i = 0; i< numAgents; i++){
 
@@ -81,8 +78,7 @@ void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph, omp_loc
 			int current = agent->currentNode;
 			int next;
 
-			int flip = directions[i];
-			//int flip = rand_r(&random) % 2;
+			int flip = rand_r(&random) % 2;
 			//check that movement will not push agent off graph- loop around
 			if (flip == 0 ) { //moveBackwards
 				next = current-1;
@@ -112,14 +108,14 @@ void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph, omp_loc
 			removeAgentFromNode(graph, current, agent);
 			//add agent to different node
 			addAgentToNode(graph, next, agent);
-			
+
 			omp_unset_lock(&nodeLocks[lockFirst]);
             		omp_unset_lock(&nodeLocks[lockSecond]);
 			}
 		}
-	free(directions);
 	}
 
+}
 
 
 
