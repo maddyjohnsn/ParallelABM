@@ -20,11 +20,11 @@ Compare Stdev difference with Serial: 0
 Compare Mean difference with Serial: 563
 
 -------- PARALELL_V3 RESULTS -------
-infectionsAtEnd:  [256, 256, 256, 256, 256]
+infectionsAtEnd:  [819, 819, 819, 819, 819]
 Mean, Stdev below:
-256 0.0
+819 0.0
 Compare Stdev difference with Serial: 0
-Compare Mean difference with Serial: 563
+Compare Mean difference with Serial: 0
 
 -------- PARALELL_V4 RESULTS -------
 infectionsAtEnd:  [819, 819, 819, 819, 819]

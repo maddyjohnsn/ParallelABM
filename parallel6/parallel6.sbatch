@@ -5,7 +5,6 @@
 #SBATCH --error=parallel6.out
 #SBATCH --exclusive
 
-
 echo "Starting parallel6"
 
 

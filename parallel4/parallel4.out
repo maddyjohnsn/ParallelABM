@@ -1,64 +1,54 @@
 Starting parallel4
-rm: cannot remove 'serialOutput': No such file or directory
-rm: cannot remove 'parallelOutput': No such file or directory
--------- 1000 Days --------
-SERIAL RESULTS
-
-real	0m0.689s
-user	0m0.200s
-sys	0m0.028s
-
-PARALLEL RESULTS
-
-real	0m0.782s
-user	0m24.258s
-sys	0m0.072s
-Verifying Results...
-Serial and parallel output files are DIFFERENT
-
 -------- 10000 Days --------
 SERIAL RESULTS
 
-real	0m6.480s
-user	0m1.787s
-sys	0m0.513s
+real	0m0.867s
+user	0m0.841s
+sys	0m0.024s
 
 PARALLEL RESULTS
 
-real	0m8.165s
-user	4m15.491s
-sys	0m0.932s
-Verifying Results...
-Serial and parallel output files are DIFFERENT
+real	0m1.521s
+user	0m9.068s
+sys	0m0.012s
 
 -------- 100000 Days --------
 SERIAL RESULTS
 
-real	1m10.127s
-user	0m16.513s
-sys	0m6.787s
+real	0m8.556s
+user	0m8.396s
+sys	0m0.156s
 
 PARALLELL RESULTS
 
-real	1m24.906s
-user	44m17.029s
-sys	0m8.285s
-Verifying Results...
-Serial and parallel output files are DIFFERENT
+real	0m15.290s
+user	1m31.537s
+sys	0m0.164s
 
 -------- 1000000 Days --------
 SERIAL RESULTS
 
-real	11m30.816s
-user	2m35.863s
-sys	0m57.299s
+real	1m25.818s
+user	1m24.167s
+sys	0m1.608s
 
 PARALLEL RESULTS
 
-real	14m17.455s
-user	447m31.212s
-sys	1m2.208s
-Verifying Results...
-Serial and parallel output files are DIFFERENT
+real	2m31.267s
+user	15m5.474s
+sys	0m2.040s
 
-Finished Parallel3
+-------- 10000000 Days --------
+SERIAL RESULTS
+
+real	14m56.170s
+user	14m37.564s
+sys	0m18.343s
+
+PARALLEL RESULTS
+
+real	25m14.263s
+user	151m7.392s
+sys	0m17.928s
+
+Finished Parallel4
