@@ -4,9 +4,7 @@
 #SBATCH --output=parallel5.out
 #SBATCH --error=parallel5.out
 #SBATCH --exclusive
-#SBATCH --cpus-per-task=6
 
-export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 
 echo "Starting parallel5"
 
@@ -51,5 +49,5 @@ time ../parallel_v5 1000 50 10000000
 
 
 echo ""
-echo "Finished Parallel3"
+echo "Finished Parallel5"
 
