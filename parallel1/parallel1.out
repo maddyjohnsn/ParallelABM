@@ -1,62 +1,54 @@
 Starting parallel1
--------- 1000 Days --------
-SERIAL RESULTS
-
-real	0m0.756s
-user	0m0.171s
-sys	0m0.063s
-
-PARALLEL RESULTS
-
-real	0m0.703s
-user	0m21.732s
-sys	0m0.060s
-Verifying Results...
-Serial and parallel output files are IDENTICAL
-
 -------- 10000 Days --------
 SERIAL RESULTS
 
-real	0m6.358s
-user	0m1.604s
-sys	0m0.678s
+real	0m0.825s
+user	0m0.819s
+sys	0m0.004s
 
 PARALLEL RESULTS
 
-real	0m6.783s
-user	3m31.593s
-sys	0m0.712s
-Verifying Results...
-Serial and parallel output files are IDENTICAL
+real	0m1.526s
+user	0m48.629s
+sys	0m0.016s
 
 -------- 100000 Days --------
 SERIAL RESULTS
 
-real	1m5.102s
-user	0m16.020s
-sys	0m4.769s
+real	0m8.374s
+user	0m8.373s
+sys	0m0.000s
 
 PARALLELL RESULTS
 
-real	1m8.236s
-user	35m29.616s
-sys	0m6.865s
-Verifying Results...
-Serial and parallel output files are IDENTICAL
+real	0m15.349s
+user	8m10.841s
+sys	0m0.128s
 
 -------- 1000000 Days --------
 SERIAL RESULTS
 
-real	11m27.615s
-user	2m39.991s
-sys	1m11.553s
+real	1m25.314s
+user	1m25.308s
+sys	0m0.004s
 
 PARALLEL RESULTS
 
-real	11m18.447s
-user	352m43.882s
-sys	1m17.908s
-Verifying Results...
-Serial and parallel output files are IDENTICAL
+real	2m32.951s
+user	81m31.673s
+sys	0m0.996s
+
+-------- 10000000 Days --------
+SERIAL RESULTS
+
+real	13m48.654s
+user	13m48.631s
+sys	0m0.004s
+
+PARALLEL RESULTS
+
+real	25m27.631s
+user	814m20.426s
+sys	0m11.059s
 
 Finished Parallel1

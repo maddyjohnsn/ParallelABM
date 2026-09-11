@@ -47,3 +47,5 @@ time ../parallel_v6 1000 50 10000000
 echo ""
 echo "Finished Parallel6"
 
+
+
