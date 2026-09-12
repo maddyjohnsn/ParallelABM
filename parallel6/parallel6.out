@@ -1,0 +1,2 @@
+/var/spool/slurm/job01721/slurm_script: line 7: syntax error near unexpected token `<<<'
+/var/spool/slurm/job01721/slurm_script: line 7: `<<<<<<< HEAD'

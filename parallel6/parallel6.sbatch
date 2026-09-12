@@ -4,11 +4,6 @@
 #SBATCH --output=parallel6.out
 #SBATCH --error=parallel6.out
 #SBATCH --exclusive
-<<<<<<< HEAD
-=======
-#SBATCH --cpus-per-task=6
-
->>>>>>> 219963d1e90b92673bd1e29046bd64d62a0aeeed
 
 echo "Starting parallel6"
 

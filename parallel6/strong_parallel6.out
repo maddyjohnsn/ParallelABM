@@ -1,0 +1,37 @@
+Starting strong_parallel6
+
+------ Serial Results ------
+
+------ parallel_v6 Results ------
+
+		Cores: 1
+
+real	5m58.703s
+user	5m51.162s
+sys	0m7.528s
+          Cores: 2
+
+real	6m6.544s
+user	11m58.846s
+sys	0m14.212s
+          Cores: 4
+
+real	8m49.899s
+user	34m55.081s
+sys	0m24.448s
+          Cores: 8
+
+real	7m29.727s
+user	59m33.509s
+sys	0m24.180s
+          Cores: 16
+
+real	8m12.722s
+user	130m57.545s
+sys	0m25.764s
+          Cores: 32
+
+real	10m44.422s
+user	343m1.820s
+sys	0m36.714s
+Ending strong_parallel6

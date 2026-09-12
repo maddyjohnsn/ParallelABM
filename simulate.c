@@ -4,7 +4,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define SHARED_SEED 42
 
 //will go through the Graph updating agent infection
 void updateInfection(struct Graph* graph){
@@ -38,14 +37,6 @@ void updateInfection(struct Graph* graph){
 }
 
 void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
-	int *directions = malloc(numAgents * sizeof(int));
-	for (int i = 0; i < numAgents; i++) {
-                unsigned int seed = SHARED_SEED + i;
-                directions[i] = rand_r(&seed) % 2;
-	
-	//	directions[i] = rand() % 2;
-	}
-	
 	for (int i = 0; i< numAgents; i++){
 
 		struct Agent* agent = &agents[i];
@@ -55,8 +46,7 @@ void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
 		//randomly decide if agent is moving left or right
 		
 		
-		int flip = directions[i];	
-	//	int flip = rand() % 2;
+		int flip = rand() % 2;
 		//check that movement will not push agent off graph- loop around
 		if (flip == 0 ) { //moveBackwards
 			next = current-1;

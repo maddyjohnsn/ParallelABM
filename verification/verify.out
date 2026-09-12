@@ -1,0 +1,99 @@
+Starting Verification
+
+rm: cannot remove 'numInfectedAtEnd.txt': No such file or directory
+-------- SERIAL_V1 RESULTS (everything compared against these..) -------
+infectionsAtEnd:  [256, 256, 256, 256, 256]
+Mean, Stdev below:
+256 0.0
+-------- PARALELL_V1 RESULTS -------
+infectionsAtEnd:  [256, 256, 256, 256, 256]
+Mean, Stdev below:
+256 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: 0
+
+-------- PARALELL_V2 RESULTS -------
+infectionsAtEnd:  [807, 807, 807, 823, 828]
+Mean, Stdev below:
+814.4 10.285912696499032
+Compare Stdev difference with Serial: -10.2859
+Compare Mean difference with Serial: -558.4
+
+-------- PARALELL_V3 RESULTS -------
+infectionsAtEnd:  [828, 828, 813, 818, 818]
+Mean, Stdev below:
+821 6.708203932499369
+Compare Stdev difference with Serial: -6.7082
+Compare Mean difference with Serial: -565
+
+-------- PARALELL_V4 RESULTS -------
+infectionsAtEnd:  [824, 824, 824, 824, 824]
+Mean, Stdev below:
+824 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: -568
+
+-------- PARALELL_V5 RESULTS -------
+infectionsAtEnd:  [824, 824, 824, 824, 824]
+Mean, Stdev below:
+824 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: -568
+
+-------- PARALELL_V6 RESULTS -------
+infectionsAtEnd:  [824, 824, 822, 815, 815]
+Mean, Stdev below:
+820 4.636809247747852
+Compare Stdev difference with Serial: -4.63681
+Compare Mean difference with Serial: -564
+
+-------- PARALELL_V6_RNGChange RESULTS -------
+infectionsAtEnd:  [819, 819, 819, 819, 819]
+Mean, Stdev below:
+819 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: -563
+
+-------- PARALELL_V7 RESULTS -------
+infectionsAtEnd:  [815, 815, 815, 815, 815]
+Mean, Stdev below:
+815 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: -559
+
+-------- PARALELL_V8 RESULTS -------
+infectionsAtEnd:  [786, 786, 786, 786, 786]
+Mean, Stdev below:
+786 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: -530
+
+-------- SERIAL_V1_O3 RESULTS -------
+infectionsAtEnd:  [256, 256, 256, 256, 256]
+Mean, Stdev below:
+256 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: 0
+
+-------- PARALLEL_V1_O3 RESULTS -------
+infectionsAtEnd:  [256, 256, 256, 256, 256]
+Mean, Stdev below:
+256 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: 0
+
+-------- PARALLEL_V2_O3 RESULTS -------
+infectionsAtEnd:  [802, 802, 802, 787, 828]
+Mean, Stdev below:
+804.2 14.805404418657398
+Compare Stdev difference with Serial: -14.8054
+Compare Mean difference with Serial: -548.2
+
+-------- SERIAL_V2 (graph restructure) RESULTS -------
+infectionsAtEnd:  [256, 256, 256, 256, 256]
+Mean, Stdev below:
+256 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: 0
+
+Ending Verification
