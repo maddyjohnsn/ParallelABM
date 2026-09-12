@@ -5,7 +5,6 @@
 #include <omp.h>
 #include <stdlib.h>
 
-#define SHARED_SEED 42
 
 //will go through the Graph updating agent infection
 void updateInfection(struct Graph* graph){

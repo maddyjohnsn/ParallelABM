@@ -47,5 +47,5 @@ time ../parallel_v5 1000 50 10000000
 
 
 echo ""
-echo "Finished Parallel3"
+echo "Finished Parallel5"
 

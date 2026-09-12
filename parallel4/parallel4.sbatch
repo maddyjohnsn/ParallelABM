@@ -7,8 +7,6 @@
 
 
 
-
-
 echo "Starting parallel4"
 
 
