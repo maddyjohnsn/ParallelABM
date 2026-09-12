@@ -1,0 +1,37 @@
+Starting strong_parallel7
+
+------ Serial Results ------
+
+------ parallel_v7 Results ------
+
+		Cores: 1
+
+real	5m44.918s
+user	5m37.333s
+sys	0m7.572s
+          Cores: 2
+
+real	6m14.914s
+user	12m15.031s
+sys	0m14.764s
+          Cores: 4
+
+real	10m48.164s
+user	42m47.553s
+sys	0m24.967s
+          Cores: 8
+
+real	9m41.731s
+user	77m6.487s
+sys	0m27.164s
+          Cores: 16
+
+real	10m47.072s
+user	172m5.662s
+sys	0m27.064s
+          Cores: 32
+
+real	12m31.073s
+user	399m50.002s
+sys	0m39.313s
+Ending strong_parallel7
