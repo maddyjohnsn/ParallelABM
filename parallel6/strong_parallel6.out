@@ -2,36 +2,40 @@ Starting strong_parallel6
 
 ------ Serial Results ------
 
------- parallel_v6 Results ------
+real	28m40.354s
+user	28m40.276s
+sys	0m0.024s
+
+------ parallel_v6 Results (20 million days) ------
 
 		Cores: 1
 
-real	5m58.703s
-user	5m51.162s
-sys	0m7.528s
+real	11m51.723s
+user	11m36.164s
+sys	0m15.532s
           Cores: 2
 
-real	6m6.544s
-user	11m58.846s
-sys	0m14.212s
+real	12m8.192s
+user	23m48.445s
+sys	0m27.879s
           Cores: 4
 
-real	8m49.899s
-user	34m55.081s
-sys	0m24.448s
+real	18m2.388s
+user	71m23.206s
+sys	0m46.171s
           Cores: 8
 
-real	7m29.727s
-user	59m33.509s
-sys	0m24.180s
+real	15m4.432s
+user	119m43.639s
+sys	0m51.495s
           Cores: 16
 
-real	8m12.722s
-user	130m57.545s
-sys	0m25.764s
+real	15m26.698s
+user	246m16.522s
+sys	0m50.031s
           Cores: 32
 
-real	10m44.422s
-user	343m1.820s
-sys	0m36.714s
+real	21m5.477s
+user	673m30.536s
+sys	1m16.313s
 Ending strong_parallel6

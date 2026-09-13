@@ -34,6 +34,8 @@ gcc $CFLAGS -fopenmp mainBaseDays_v2_verify.c ../state_v2.c ../agent_v2.c ../sim
 # parallell v8 (parallel 6 with struct reorg and -O3 compiler flag)
 gcc $CFLAGS -O3 -fopenmp mainBaseDays_v2_verify.c ../state_v2.c ../agent_v2.c ../simulatePar6_v2.c -o parallel_v8
 
+#parallel v9 (parv6 with RNG Change, compiler flags, and struct reorg)
+gcc $CFLAGS -fopenmp -O3 mainBaseDays_v2_verify.c ../state_v2.c ../agent_v2.c ../simulatePar6RNGChange_v2.c -o parallel_v9
 # initial parallel -03
 gcc $CFLAGS -fopenmp -O3 mainBaseDays_verify.c ../state.c ../agent.c ../simulatePar.c -o parallel_v1_O3
 
