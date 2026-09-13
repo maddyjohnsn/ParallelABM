@@ -24,6 +24,9 @@ gcc -fopenmp mainBaseDays6.c state.c agent.c simulatePar5.c -o parallel_v5
 # parallel v6 
 gcc -fopenmp mainBaseDays6.c state.c agent.c simulatePar6.c -o parallel_v6
 
+# parallel RNG change
+gcc -fopenmp mainBaseDays6.c state.c agent.c simulatePar6RNGChange.c -o parallel_v6_RNGChange
+
 # parallell v7 (parallel 6 with struct reorg)
 gcc -fopenmp mainBaseDays_v2.c state_v2.c agent_v2.c simulatePar6_v2.c -o parallel_v7
 
@@ -41,4 +44,8 @@ gcc -fopenmp -O3 mainBaseDays.c state.c agent.c simulatePar2.c -o parallel_v2_O3
 
 # serial graph restructure
 gcc mainBaseDays_v2.c state_v2.c agent_v2.c simulate_v2.c -o serial_v2                                                                                  
+#parallel 9
+gcc -fopenmp -O3 mainBaseDays_v2.c state_v2.c agent_v2.c simulatePar9.c -o parallel_v9
 
+#parallel 11
+#gcc -fopenmp  mainBaseDays_v2.c state_v2.c agent_v2.c simulatePar11.c -o parallel_v11
