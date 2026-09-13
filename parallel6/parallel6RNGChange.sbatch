@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH --job-name=ABM
 #SBATCH --partition=Mem500
-#SBATCH --output=parallel6.out
-#SBATCH --error=parallel6.out
+#SBATCH --output=parallel6RNG.out
+#SBATCH --error=parallel6RNG.out
 #SBATCH --exclusive
 
-echo "Starting parallel6"
+echo "Starting parallel6RNG"
 
 
 echo "-------- 10000 Days --------"
