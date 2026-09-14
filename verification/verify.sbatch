@@ -270,4 +270,22 @@ echo "Compare Mean difference with Serial: $meanDifference"
 rm numInfectedAtEnd.txt
 echo ""
 
+echo "-------- hail mary results -------"
+./parallel_HailMary $num_agents $num_nodes $num_days
+./parallel_HailMary $num_agents $num_nodes $num_days
+./parallel_HailMary $num_agents $num_nodes $num_days
+./parallel_HailMary $num_agents $num_nodes $num_days
+./parallel_HailMary $num_agents $num_nodes $num_days
+python3 calculateStdev.py
+compareResults=$(python3 calculateStdev.py | tail -n 1)
+read compareMean compareStdev <<< "$compareResults"
+meanDifference=$(awk -v a="$serialMean" -v b="$compareMean" 'BEGIN {print a - b}')
+stdevDifference=$(awk -v a="$serialStdev" -v b="$compareStdev" 'BEGIN {print a - b}')
+echo "Compare Stdev difference with Serial: $stdevDifference"
+echo "Compare Mean difference with Serial: $meanDifference"
+
+rm numInfectedAtEnd.txt
+echo ""
+
+
 echo "Ending Verification"
