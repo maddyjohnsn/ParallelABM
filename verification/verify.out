@@ -13,39 +13,39 @@ Compare Stdev difference with Serial: 0
 Compare Mean difference with Serial: 0
 
 -------- PARALELL_V2 RESULTS -------
-infectionsAtEnd:  [824, 824, 824, 824, 824]
+infectionsAtEnd:  [783, 783, 783, 783, 783]
 Mean, Stdev below:
-824 0.0
+783 0.0
 Compare Stdev difference with Serial: 0
-Compare Mean difference with Serial: -568
+Compare Mean difference with Serial: -527
 
 -------- PARALELL_V3 RESULTS -------
-infectionsAtEnd:  [814, 814, 810, 804, 804]
+infectionsAtEnd:  [816, 816, 816, 812, 818]
 Mean, Stdev below:
-809.2 5.019960159204453
-Compare Stdev difference with Serial: -5.01996
-Compare Mean difference with Serial: -553.2
+815.6 2.1908902300206643
+Compare Stdev difference with Serial: -2.19089
+Compare Mean difference with Serial: -559.6
 
 -------- PARALELL_V4 RESULTS -------
-infectionsAtEnd:  [804, 804, 804, 804, 804]
+infectionsAtEnd:  [818, 818, 818, 818, 818]
 Mean, Stdev below:
-804 0.0
+818 0.0
 Compare Stdev difference with Serial: 0
-Compare Mean difference with Serial: -548
+Compare Mean difference with Serial: -562
 
 -------- PARALELL_V5 RESULTS -------
-infectionsAtEnd:  [821, 821, 821, 821, 821]
+infectionsAtEnd:  [799, 799, 799, 799, 799]
 Mean, Stdev below:
-821 0.0
+799 0.0
 Compare Stdev difference with Serial: 0
-Compare Mean difference with Serial: -565
+Compare Mean difference with Serial: -543
 
 -------- PARALELL_V6 RESULTS -------
-infectionsAtEnd:  [821, 821, 821, 821, 821]
+infectionsAtEnd:  [799, 799, 799, 799, 799]
 Mean, Stdev below:
-821 0.0
+799 0.0
 Compare Stdev difference with Serial: 0
-Compare Mean difference with Serial: -565
+Compare Mean difference with Serial: -543
 
 -------- PARALELL_V6_RNGChange RESULTS -------
 infectionsAtEnd:  [819, 819, 819, 819, 819]
@@ -55,18 +55,18 @@ Compare Stdev difference with Serial: 0
 Compare Mean difference with Serial: -563
 
 -------- PARALELL_V7 RESULTS -------
-infectionsAtEnd:  [812, 812, 812, 812, 812]
+infectionsAtEnd:  [816, 816, 816, 816, 816]
 Mean, Stdev below:
-812 0.0
+816 0.0
 Compare Stdev difference with Serial: 0
-Compare Mean difference with Serial: -556
+Compare Mean difference with Serial: -560
 
 -------- PARALELL_V8 RESULTS -------
-infectionsAtEnd:  [812, 812, 812, 806, 810]
+infectionsAtEnd:  [816, 816, 816, 816, 816]
 Mean, Stdev below:
-810.4 2.6076809620810595
-Compare Stdev difference with Serial: -2.60768
-Compare Mean difference with Serial: -554.4
+816 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: -560
 
 -------- PARALELL_V9 RESULTS -------
 infectionsAtEnd:  [819, 819, 819, 819, 819]
@@ -90,11 +90,11 @@ Compare Stdev difference with Serial: 0
 Compare Mean difference with Serial: 0
 
 -------- PARALLEL_V2_O3 RESULTS -------
-infectionsAtEnd:  [830, 830, 794, 799, 799]
+infectionsAtEnd:  [810, 810, 810, 810, 820]
 Mean, Stdev below:
-810.4 18.008331405213532
-Compare Stdev difference with Serial: -18.0083
-Compare Mean difference with Serial: -554.4
+812 4.47213595499958
+Compare Stdev difference with Serial: -4.47214
+Compare Mean difference with Serial: -556
 
 -------- SERIAL_V2 (graph restructure) RESULTS -------
 infectionsAtEnd:  [256, 256, 256, 256, 256]
@@ -102,5 +102,12 @@ Mean, Stdev below:
 256 0.0
 Compare Stdev difference with Serial: 0
 Compare Mean difference with Serial: 0
+
+-------- hail mary results -------
+infectionsAtEnd:  [819, 819, 819, 819, 819]
+Mean, Stdev below:
+819 0.0
+Compare Stdev difference with Serial: 0
+Compare Mean difference with Serial: -563
 
 Ending Verification

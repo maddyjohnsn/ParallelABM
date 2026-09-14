@@ -43,4 +43,7 @@ gcc $CFLAGS -fopenmp -O3 mainBaseDays_verify.c ../state.c ../agent.c ../simulate
 gcc $CFLAGS -fopenmp -O3 mainBaseDays_verify.c ../state.c ../agent.c ../simulatePar2.c -o parallel_v2_O3
 
 # serial graph restructure
-gcc $CFLAGS mainBaseDays_v2_verify.c ../state_v2.c ../agent_v2.c ../simulate_v2.c -o serial_v2                               
+gcc $CFLAGS mainBaseDays_v2_verify.c ../state_v2.c ../agent_v2.c ../simulate_v2.c -o serial_v2 
+
+# hail mary
+gcc $CFLAGS -fopenmp mainBaseDays6_verify.c ../state.c ../agent.c ../simulateParHailMary.c -o parallel_HailMary                              
