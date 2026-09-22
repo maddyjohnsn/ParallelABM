@@ -11,7 +11,7 @@ export TAU_METRICS=TIME,PAPI_TOT_INS,PAPI_L1_DCM
 
 mkdir -p results
 
-toRun=(tauBuild_v2 tauBuild)
+toRun=(tauBuild_v2 tauBuild tauBuildPar)
 
 for RUN in "${toRun[@]}";  do
 

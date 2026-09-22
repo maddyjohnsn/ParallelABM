@@ -3,41 +3,53 @@ Starting parallel5
 -------- 10000 Days --------
 SERIAL RESULTS
 
-real	0m0.887s
-user	0m0.852s
-sys	0m0.032s
+real	0m0.844s
+user	0m0.842s
+sys	0m0.000s
 
 PARALLEL RESULTS
 
-real	0m0.533s
-user	0m3.102s
-sys	0m0.052s
+real	0m0.614s
+user	0m19.391s
+sys	0m0.032s
 
 -------- 100000 Days --------
 SERIAL RESULTS
 
-real	0m8.650s
-user	0m8.455s
-sys	0m0.192s
+real	0m8.584s
+user	0m8.579s
+sys	0m0.004s
 
 PARALLELL RESULTS
 
-real	0m5.278s
-user	0m31.295s
-sys	0m0.328s
+real	0m6.286s
+user	3m20.600s
+sys	0m0.380s
 
 -------- 1000000 Days --------
 SERIAL RESULTS
 
-real	1m26.943s
-user	1m24.488s
-sys	0m2.420s
+real	1m22.641s
+user	1m22.638s
+sys	0m0.000s
 
 PARALLEL RESULTS
 
-real	0m51.431s
-user	5m5.625s
-sys	0m2.892s
+real	1m4.220s
+user	34m10.201s
+sys	0m3.823s
 
 -------- 10000000 Days --------
 SERIAL RESULTS
+
+real	14m31.616s
+user	14m31.596s
+sys	0m0.008s
+
+PARALLEL RESULTS
+
+real	10m35.197s
+user	338m4.970s
+sys	0m37.913s
+
+Finished Parallel5

@@ -1,2 +1,54 @@
-/var/spool/slurm/job01721/slurm_script: line 7: syntax error near unexpected token `<<<'
-/var/spool/slurm/job01721/slurm_script: line 7: `<<<<<<< HEAD'
+Starting parallel6
+-------- 10000 Days --------
+SERIAL RESULTS
+
+real	0m0.856s
+user	0m0.841s
+sys	0m0.004s
+
+PARALLEL RESULTS
+
+real	0m0.630s
+user	0m19.558s
+sys	0m0.028s
+
+-------- 100000 Days --------
+SERIAL RESULTS
+
+real	0m8.405s
+user	0m8.404s
+sys	0m0.000s
+
+PARALLELL RESULTS
+
+real	0m6.193s
+user	3m17.502s
+sys	0m0.448s
+
+-------- 1000000 Days --------
+SERIAL RESULTS
+
+real	1m24.825s
+user	1m24.821s
+sys	0m0.000s
+
+PARALLEL RESULTS
+
+real	1m4.916s
+user	34m31.234s
+sys	0m3.764s
+
+-------- 10000000 Days --------
+SERIAL RESULTS
+
+real	14m6.857s
+user	14m6.831s
+sys	0m0.008s
+
+PARALLEL RESULTS
+
+real	10m36.645s
+user	338m46.907s
+sys	0m37.796s
+
+Finished Parallel6
