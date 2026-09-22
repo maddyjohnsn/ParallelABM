@@ -1,0 +1,36 @@
+Starting weak_parallel8
+
+
+------ weak_parallel8 Results ------
+
+		Cores: 1
+
+real	0m4.624s
+user	0m4.447s
+sys	0m0.176s
+          Cores: 2
+
+real	0m12.596s
+user	0m24.565s
+sys	0m0.616s
+          Cores: 4
+
+real	0m53.893s
+user	3m33.675s
+sys	0m1.872s
+          Cores: 8
+
+real	1m42.693s
+user	13m37.676s
+sys	0m3.772s
+          Cores: 16
+
+real	3m56.109s
+user	62m48.312s
+sys	0m9.160s
+          Cores: 32
+
+real	8m7.231s
+user	259m19.515s
+sys	0m25.849s
+Finished weak_parallel8

@@ -1,0 +1,54 @@
+Starting parallel8
+-------- 10000 Days --------
+SERIAL RESULTS
+
+real	0m0.832s
+user	0m0.830s
+sys	0m0.000s
+
+PARALLEL RESULTS
+
+real	0m0.766s
+user	0m24.221s
+sys	0m0.048s
+
+-------- 100000 Days --------
+SERIAL RESULTS
+
+real	0m8.535s
+user	0m8.534s
+sys	0m0.000s
+
+PARALLELL RESULTS
+
+real	0m7.845s
+user	4m10.321s
+sys	0m0.444s
+
+-------- 1000000 Days --------
+SERIAL RESULTS
+
+real	1m26.482s
+user	1m26.474s
+sys	0m0.004s
+
+PARALLEL RESULTS
+
+real	1m19.466s
+user	42m15.922s
+sys	0m4.036s
+
+-------- 10000000 Days --------
+SERIAL RESULTS
+
+real	14m10.186s
+user	14m10.148s
+sys	0m0.016s
+
+PARALLEL RESULTS
+
+real	12m58.541s
+user	414m23.622s
+sys	0m40.865s
+
+Finished Parallel8

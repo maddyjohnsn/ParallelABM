@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "state.h"
-#include "agent.h"
+#include <sys/stat.h>
+#include "state_v2.h"
+#include "agent_v2.h"
 
 
 // creates a graph structure: initializes a list of lists of neighbors, 
@@ -21,65 +22,6 @@ struct Graph* createGraph(int numNodes) {
 		newGraph->nodes[i].numInfected = 0;
     	}
 	return newGraph;
-}
-// adds an undirectional edge (goes from source to dest and vice versa) between two nodes
-void addEdge(struct Graph* graph, int source, int dest, int weight) {
-
-	if (graph->nodes[source].numNeighbors >= MAX_NEIGHBORS || graph->nodes[dest].numNeighbors >= MAX_NEIGHBORS) {
-		printf("Nodes cannot exceed %d neighbors\n", MAX_NEIGHBORS);
-		exit(EXIT_FAILURE);
-		}
-	// get the number neighbors src currently has so we can 
-	// add to neighbors list at the correct index
-	int sourceIndex = graph->nodes[source].numNeighbors;
-	// place dest in source's neighbor list
-	graph->nodes[source].neighbors[sourceIndex] = dest;
-	// place weight in weights list
-	graph->nodes[source].weights[sourceIndex] = weight;
-	// increment num neighbors for source
-	graph->nodes[source].numNeighbors++;
-
-
-	// do the reverse of above code so graph is not directional	
-	int destIndex = graph->nodes[dest].numNeighbors;
-	graph->nodes[dest].neighbors[destIndex] = source;
-	graph->nodes[dest].weights[destIndex] = weight;
-	graph->nodes[dest].numNeighbors++;
-}
-
-
-//adding it to make a ring edge so that we don't have to do the work each time
-//takes the graph and 1 weight but in the future we could randomize it!!
-
-void addRingEdges(struct Graph* graph, int weight){
-	for(int i = 0; i<graph->numNodes; i++){
-		int nextNode = (i+1);
-		if (nextNode == graph->numNodes){
-			nextNode =0;
-		}
-		addEdge(graph, i, nextNode, weight);
-	}
-}
-
-
-//we could in the future add chords in our ring
-
-
-// prints each node and its neighbors. rudimentary right now could make nicer later
-void showGraph(struct Graph* graph) {
-	printf("Vertex:  Adjacency List\n");
-	printf("Format: NodeId(numberOfAgents)(numInfected) ---> neighborNode(edgeWeight), neighborNode(edgeWeight), etc.\n");
-	// loop through nodes
-	for (int i = 0; i < graph->numNodes; i++) {
-		// print node id and how many neighbors
-        	printf("%d(%d)(%d) ---> ", graph->nodes[i].id, graph->nodes[i].numAgents, graph->nodes[i].numInfected);
-		// then print its neighbors
-		for (int j = 0; j < graph->nodes[i].numNeighbors; j++) {
-        		printf("%d(%d),  ", graph->nodes[i].neighbors[j], graph->nodes[i].weights[j]);
-			
-        	}
-        printf("\n");
-    }
 }
 
 // add an agent to a given node
@@ -102,6 +44,9 @@ void addAgentToNode(struct Graph* graph, int nodeId, struct Agent* agent) {
 	// if yes, increment numInfected
 		node->numInfected++;
 	}
+
+	// update currentnode
+	agent->currentNode = nodeId; 
 }
 // remove an agent from a given node
 void removeAgentFromNode(struct Graph* graph, int nodeId, struct Agent* agent) {
@@ -124,6 +69,7 @@ void removeAgentFromNode(struct Graph* graph, int nodeId, struct Agent* agent) {
 	if (idxToRemove == -1) {
 	        return;
     	}
+
 	// shift indices after the removed index to the left
 	for (int i = idxToRemove; i < node->numAgents - 1; i++) {
 		node->agentsInNode[i] = node->agentsInNode[i + 1];
@@ -145,50 +91,12 @@ void removeAgentFromNode(struct Graph* graph, int nodeId, struct Agent* agent) {
 
 
 
-<<<<<<< HEAD
-// probabkly need a destroy function for graph as well....
-//BOOM^ done (I hope)
-=======
->>>>>>> maddy
 
 void freeGraph(struct Graph* graph) {
     if (graph == NULL) return;
     free(graph->nodes);
     free(graph);
 }
-<<<<<<< HEAD
-
-/*
-int main(int agrc, char** argv) {
-	// Create a graph with 3 vertices
-	struct Graph* undirectedGraph = createGraph(8);
-
-	// Add edges
-//	addEdge(undirectedGraph, 0, 1, 3);
-//	addEdge(undirectedGraph, 1, 2, 3);
-//	addEdge(undirectedGraph, 2, 3, 3);
-//	addEdge(undirectedGraph, 3, 4, 3);
-//	addEdge(undirectedGraph, 4, 5, 3);
-//	addEdge(undirectedGraph, 5, 6, 3);
-//	addEdge(undirectedGraph, 6, 7, 3);
-//	addEdge(undirectedGraph, 7, 0, 3);
-
-	addRingEdges(undirectedGraph, 3);
-
-	Agent* agentsList = makeAgent(20, undirectedGraph);
-	addAgentToNode(undirectedGraph, 0, &agentsList[0]);
-	showGraph(undirectedGraph);
-	//removeAgentFromNode(undirectedGraph, 0, &agentsList[0]);
-	//showGraph(undirectedGraph);
-	//removeAgentFromNode(undirectedGraph, 0, &agentsList[0]);
-
-	freeGraph(undirectedGraph);
-   	return 0;
-}
-
-
-*/
-=======
 // this function writes "snapshots" of graph data into a file
 // each time it is called it will write the data from the graph at that instant, and either
 // append to an existing file or create a new file
@@ -212,7 +120,7 @@ void writeData(struct Graph* graph, char *outputFile) {
 			perror("Error opening nodes file");
 			return;
 		}
-	fprintf(node_file, "(nodeID, percentInfected), edges\n");
+	fprintf(node_file, "(nodeID, percentInfected)\n");
 	// special character to indicate beginning of data
 	fprintf(node_file, "%!\n");
 	}
@@ -226,17 +134,11 @@ void writeData(struct Graph* graph, char *outputFile) {
 		}
 		fprintf(node_file, "(%d, %.2f);", i, percentInfected);
 	
-		for (int j = 0; j<node->numNeighbors; j++) {
-			fprintf(node_file, "(%d,%d)", i, node->neighbors[j]);
-			if (j < node->numNeighbors - 1) {
-                		fprintf(node_file, ";");   
-			}
 			
-		}
 		fprintf(node_file, "\n");
 	}
 	// special character to indicate end  of data
         fprintf(node_file, "%!\n");
+
 	fclose(node_file);
 }
->>>>>>> maddy

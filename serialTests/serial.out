@@ -1,0 +1,48 @@
+Starting serial
+rm: cannot remove 'serialOutput': No such file or directory
+100
+
+real	0m0.064s
+user	0m0.024s
+sys	0m0.000s
+500
+
+real	0m0.301s
+user	0m0.085s
+sys	0m0.031s
+1000
+
+real	0m0.628s
+user	0m0.167s
+sys	0m0.067s
+5000
+
+real	0m3.107s
+user	0m0.755s
+sys	0m0.398s
+10000
+
+real	0m6.274s
+user	0m1.536s
+sys	0m0.760s
+50000
+
+real	0m33.604s
+user	0m7.666s
+sys	0m3.529s
+100000
+
+real	1m11.290s
+user	0m15.555s
+sys	0m7.463s
+500000
+
+real	5m38.591s
+user	1m18.710s
+sys	0m36.076s
+1000000
+
+real	11m15.294s
+user	2m41.569s
+sys	1m11.805s
+Finished serial

@@ -1,0 +1,54 @@
+Starting parallel7
+-------- 10000 Days --------
+SERIAL RESULTS
+
+real	0m0.842s
+user	0m0.840s
+sys	0m0.000s
+
+PARALLEL RESULTS
+
+real	0m0.751s
+user	0m23.744s
+sys	0m0.068s
+
+-------- 100000 Days --------
+SERIAL RESULTS
+
+real	0m8.471s
+user	0m8.469s
+sys	0m0.000s
+
+PARALLELL RESULTS
+
+real	0m7.513s
+user	3m59.731s
+sys	0m0.392s
+
+-------- 1000000 Days --------
+SERIAL RESULTS
+
+real	1m25.980s
+user	1m25.972s
+sys	0m0.004s
+
+PARALLEL RESULTS
+
+real	1m13.544s
+user	39m8.820s
+sys	0m4.052s
+
+-------- 10000000 Days --------
+SERIAL RESULTS
+
+real	14m7.462s
+user	14m7.422s
+sys	0m0.008s
+
+PARALLEL RESULTS
+
+real	12m19.459s
+user	393m35.310s
+sys	0m42.805s
+
+Finished Parallel7

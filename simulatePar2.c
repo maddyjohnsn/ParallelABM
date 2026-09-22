@@ -2,12 +2,12 @@
 #include "agent.h"
 #include "simulate.h"
 #include <string.h>
-#include <stdlib.h>
-
+#include <omp.h>
 
 //will go through the Graph updating agent infection
 void updateInfection(struct Graph* graph){
 	// loop through each node
+	#pragma omp parallel for
 	for (int i = 0; i < graph->numNodes; i++) {
 		// get node through there nodeID which should correspond to these indices
 		
@@ -25,10 +25,15 @@ void updateInfection(struct Graph* graph){
 			// based on agents predisposition and number of encounters, update infection
 			if (node->agentsInNode[j]->disposition == true && node->agentsInNode[j]->infectedEncounters >= 10) {
 				node->agentsInNode[j]->isInfected = true;
+				//data racing
+				#pragma omp atomic
 				node->numInfected++; 
 			}
 			if (node->agentsInNode[j]->disposition == false && node->agentsInNode[j]->infectedEncounters >= 15) {
 				node->agentsInNode[j]->isInfected = true;
+				
+				//data racing
+                                #pragma omp atomic
 				node->numInfected++;
 			}
 		}
@@ -37,34 +42,44 @@ void updateInfection(struct Graph* graph){
 }
 
 void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
-	for (int i = 0; i< numAgents; i++){
 
-		struct Agent* agent = &agents[i];
-		int current = agent->currentNode;
-		int next;
+	#pragma omp parallel
+	{
+		//replacement of random
+		unsigned int random = omp_get_thread_num() + time(NULL);
 
-		//randomly decide if agent is moving left or right
-		
-		
-		int flip = rand() % 2;
-		//check that movement will not push agent off graph- loop around
-		if (flip == 0 ) { //moveBackwards
-			next = current-1;
-			if (next < 0){
-				next = graph->numNodes - 1;
+		#pragma omp for
+		for (int i = 0; i< numAgents; i++){
+
+			struct Agent* agent = &agents[i];
+			int current = agent->currentNode;
+			int next;
+
+			int flip = rand_r(&random) % 2;
+			//check that movement will not push agent off graph- loop around
+			if (flip == 0 ) { //moveBackwards
+				next = current-1;
+				if (next < 0){
+					next = graph->numNodes - 1;
+				}
+			}else{
+				next = current+1;
+				if (next >= graph->numNodes){
+					next = 0;
+
+				}
 			}
-		}else{
-			next = current+1;
-			if (next >= graph->numNodes){
-				next = 0;
-
+			// need to protect these because they work on shared node data- probably need to be in the same lock- might not do much
+			#pragma omp critical
+			{
+			//remove agent from node
+			removeAgentFromNode(graph, current, agent);
+			//add agent to different node
+			addAgentToNode(graph, next, agent);
 			}
 		}
-		//remove agent from node
-		removeAgentFromNode(graph, current, agent);
-		//add agent to different node
-		addAgentToNode(graph, next, agent);
 	}
+
 }
 
 
@@ -73,11 +88,14 @@ void simulateDay(int days, struct Graph* graph,int numAgents, struct  Agent* age
 	//every day we want to move agents x2
 	//maybe need to write data like below so we can run many simulations and not overwrite
 	//fileName = multiDayOutput
+	
+	
 	for(int i = 0; i<days; i++){
+	
 		moveAgent(agents, numAgents, graph);
 		updateInfection(graph);
-		
-	//	writeData(graph, "serialOutput");
+
+		//writeData(graph, "parallelOutput");
 
 		//every day we need to increment a counter for num infected and save it
 		//start by summing every infection across all nodes

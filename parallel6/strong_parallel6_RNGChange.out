@@ -1,0 +1,42 @@
+Starting strong_parallel6
+
+------ strong_parallel6_RNGChange ------
+Serial Results
+
+real	28m13.542s
+user	28m13.510s
+sys	0m0.016s
+
+------ strong_parallel6_RNGChange Results (20 million days)------
+
+		Cores: 1
+
+real	11m41.881s
+user	11m26.309s
+sys	0m15.560s
+          Cores: 2
+
+real	12m42.695s
+user	24m53.386s
+sys	0m31.972s
+          Cores: 4
+
+real	18m44.821s
+user	74m6.467s
+sys	0m52.728s
+          Cores: 8
+
+real	17m3.964s
+user	135m30.909s
+sys	1m0.611s
+          Cores: 16
+
+real	18m42.262s
+user	298m11.190s
+sys	1m4.671s
+          Cores: 32
+
+real	26m26.270s
+user	844m11.092s
+sys	1m41.287s
+Ending strong_parallel6_RNGChange

@@ -1,0 +1,16 @@
+Starting serial_v1
+1000
+
+real	0m0.009s
+user	0m0.003s
+sys	0m0.000s
+Ending serial_v1
+Starting paralell_v1
+1000
+
+real	0m0.009s
+user	0m0.003s
+sys	0m0.000s
+Ending parallel_v1
+verifyingResults
+Serial and parallel output files are IDENTICAL

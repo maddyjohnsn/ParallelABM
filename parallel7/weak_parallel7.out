@@ -1,0 +1,36 @@
+Starting weak_parallel7
+
+
+------ weak_parallel7 Results ------
+
+		Cores: 1
+
+real	0m6.970s
+user	0m6.816s
+sys	0m0.152s
+          Cores: 2
+
+real	0m14.890s
+user	0m29.046s
+sys	0m0.724s
+          Cores: 4
+
+real	0m51.590s
+user	3m24.310s
+sys	0m2.024s
+          Cores: 8
+
+real	1m33.466s
+user	12m23.444s
+sys	0m4.184s
+          Cores: 16
+
+real	3m23.943s
+user	54m14.061s
+sys	0m8.712s
+          Cores: 32
+
+real	8m6.662s
+user	259m5.618s
+sys	0m25.130s
+Finished weak_parallel7

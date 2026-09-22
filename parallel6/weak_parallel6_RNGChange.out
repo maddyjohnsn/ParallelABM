@@ -1,0 +1,36 @@
+Starting weak_parallel6_RNGChange
+
+
+------ weak_parallel6_RNGChange Results ------
+
+		Cores: 1
+
+real	0m6.919s
+user	0m6.750s
+sys	0m0.168s
+          Cores: 2
+
+real	0m15.286s
+user	0m29.883s
+sys	0m0.680s
+          Cores: 4
+
+real	0m46.792s
+user	3m4.729s
+sys	0m2.412s
+          Cores: 8
+
+real	1m21.294s
+user	10m45.538s
+sys	0m4.700s
+          Cores: 16
+
+real	3m4.778s
+user	49m5.788s
+sys	0m10.420s
+          Cores: 32
+
+real	8m41.002s
+user	277m14.743s
+sys	0m31.805s
+Finished weak_parallel6_RNGChange

@@ -1,0 +1,36 @@
+Starting weak_parallel6
+
+
+------ weak_parallel6 Results ------
+
+		Cores: 1
+
+real	0m7.166s
+user	0m7.024s
+sys	0m0.140s
+          Cores: 2
+
+real	0m14.762s
+user	0m28.912s
+sys	0m0.600s
+          Cores: 4
+
+real	0m44.027s
+user	2m54.255s
+sys	0m1.824s
+          Cores: 8
+
+real	1m12.308s
+user	9m34.417s
+sys	0m3.940s
+          Cores: 16
+
+real	2m32.527s
+user	40m32.078s
+sys	0m8.108s
+          Cores: 32
+
+real	6m49.632s
+user	218m2.036s
+sys	0m23.362s
+Finished weak_parallel6

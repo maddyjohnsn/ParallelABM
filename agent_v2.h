@@ -2,15 +2,13 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
-#include "state.h"
+#include "state_v2.h"
 
 //this will hold our agent structs
 //
 
 
 typedef struct Agent {
-	int id;
-	int homeNode;
 	int currentNode;
 	bool isInfected;
 	bool disposition;

@@ -1,0 +1,41 @@
+Starting parallel_HailMary
+
+------ Serial Results ------
+
+real	28m14.286s
+user	28m14.265s
+sys	0m0.004s
+
+------ parallel_HailMary Results (20 million days) ------
+
+		Cores: 1
+
+real	8m51.381s
+user	8m45.070s
+sys	0m6.300s
+          Cores: 2
+
+real	11m40.882s
+user	23m9.109s
+sys	0m12.624s
+          Cores: 4
+
+real	17m46.710s
+user	70m45.174s
+sys	0m21.592s
+          Cores: 8
+
+real	13m58.996s
+user	111m29.674s
+sys	0m22.140s
+          Cores: 16
+
+real	12m49.577s
+user	204m50.003s
+sys	0m22.928s
+          Cores: 32
+
+real	15m39.464s
+user	500m25.652s
+sys	0m32.710s
+Ending strong_parallel6

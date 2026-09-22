@@ -1,0 +1,54 @@
+Starting parallel3
+-------- 10000 Days --------
+SERIAL RESULTS
+
+real	0m0.865s
+user	0m0.863s
+sys	0m0.000s
+
+PARALLEL RESULTS
+
+real	0m11.666s
+user	6m12.937s
+sys	0m0.032s
+
+-------- 100000 Days --------
+SERIAL RESULTS
+
+real	0m8.413s
+user	0m8.411s
+sys	0m0.000s
+
+PARALLELL RESULTS
+
+real	1m55.808s
+user	61m45.250s
+sys	0m0.260s
+
+-------- 1000000 Days --------
+SERIAL RESULTS
+
+real	1m24.992s
+user	1m24.979s
+sys	0m0.008s
+
+PARALLEL RESULTS
+
+real	18m57.541s
+user	606m32.086s
+sys	0m2.004s
+
+-------- 10000000 Days --------
+SERIAL RESULTS
+
+real	14m9.832s
+user	14m9.818s
+sys	0m0.004s
+
+PARALLEL RESULTS
+
+real	189m29.041s
+user	6062m4.865s
+sys	0m19.659s
+
+Finished Parallel3

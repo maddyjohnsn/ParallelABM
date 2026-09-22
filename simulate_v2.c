@@ -1,9 +1,7 @@
-#include "state.h"
-#include "agent.h"
-#include "simulate.h"
+#include "state_v2.h"
+#include "agent_v2.h"
+#include "simulate_v2.h"
 #include <string.h>
-#include <stdlib.h>
-
 
 //will go through the Graph updating agent infection
 void updateInfection(struct Graph* graph){
@@ -21,7 +19,7 @@ void updateInfection(struct Graph* graph){
 				continue;
 			}
 			// update encounters for each agent
-			node->agentsInNode[j]->infectedEncounters += infectedAtStartOfDay;  ;
+			node->agentsInNode[j]->infectedEncounters += infectedAtStartOfDay;  
 			// based on agents predisposition and number of encounters, update infection
 			if (node->agentsInNode[j]->disposition == true && node->agentsInNode[j]->infectedEncounters >= 10) {
 				node->agentsInNode[j]->isInfected = true;
@@ -37,6 +35,12 @@ void updateInfection(struct Graph* graph){
 }
 
 void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
+	int *directions = malloc(numAgents * sizeof(int));
+
+        for (int i = 0; i < numAgents; i++) {
+                directions[i] = rand() % 2;
+        }   
+
 	for (int i = 0; i< numAgents; i++){
 
 		struct Agent* agent = &agents[i];
@@ -44,9 +48,8 @@ void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
 		int next;
 
 		//randomly decide if agent is moving left or right
-		
-		
-		int flip = rand() % 2;
+		int flip = directions[i]; 
+		//int flip = rand() % 2;
 		//check that movement will not push agent off graph- loop around
 		if (flip == 0 ) { //moveBackwards
 			next = current-1;
@@ -62,11 +65,11 @@ void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
 		}
 		//remove agent from node
 		removeAgentFromNode(graph, current, agent);
-		//add agent to different node
+		//add agent to different node		
 		addAgentToNode(graph, next, agent);
-	}
+	}	
+	free(directions);
 }
-
 
 void simulateDay(int days, struct Graph* graph,int numAgents, struct  Agent* agents, int* dailyInfectedCounts){
 
@@ -77,7 +80,7 @@ void simulateDay(int days, struct Graph* graph,int numAgents, struct  Agent* age
 		moveAgent(agents, numAgents, graph);
 		updateInfection(graph);
 		
-	//	writeData(graph, "serialOutput");
+		//writeData(graph, "serialOutput");
 
 		//every day we need to increment a counter for num infected and save it
 		//start by summing every infection across all nodes

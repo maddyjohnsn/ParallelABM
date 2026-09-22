@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
-#include "agent.h"
-#include "state.h"
+#include "agent_v2.h"
+#include "state_v2.h"
 //this will hold our agent structs
 
 //if agent interacts with 3 other infected agents- infected
@@ -37,8 +37,6 @@ Agent* makeAgent(struct Graph* graph, int NAGENTS) {
 	//10% of americans are addicted to drugs. 5% of ours will start addicted
 	for(int i = 0; i<NAGENTS; i++){
 		// initialize struct variables to 0 or false.
-		agents[i].id = 0; 
-		agents[i].homeNode = 0; 
 		agents[i].currentNode = 0; 
 		agents[i].isInfected = false; 
 		agents[i].disposition = false; 
@@ -47,14 +45,10 @@ Agent* makeAgent(struct Graph* graph, int NAGENTS) {
 		if(i< numInfected){
 			agents[i].isInfected = true;
 		}
-		agents[i].id = i;
 		//gotta make it deterministic??!!
 		//also gotta make it random because 
 		//agents[i].currentNode = ;
 		
-		
-
-			
 	}
 	return agents;
 }

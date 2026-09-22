@@ -1,0 +1,64 @@
+Starting parallel1_03
+rm: cannot remove 'serialOutput': No such file or directory
+rm: cannot remove 'parallelOutput': No such file or directory
+-------- 1000 Days --------
+SERIAL RESULTS
+
+real	0m0.640s
+user	0m0.072s
+sys	0m0.098s
+
+PARALLEL RESULTS
+
+real	0m0.563s
+user	0m17.375s
+sys	0m0.068s
+Verifying Results...
+Serial and parallel output files are IDENTICAL
+
+-------- 10000 Days --------
+SERIAL RESULTS
+
+real	0m6.369s
+user	0m1.041s
+sys	0m0.660s
+
+PARALLEL RESULTS
+
+real	0m5.688s
+user	2m56.961s
+sys	0m0.737s
+Verifying Results...
+Serial and parallel output files are IDENTICAL
+
+-------- 100000 Days --------
+SERIAL RESULTS
+
+real	0m58.811s
+user	0m8.172s
+sys	0m6.191s
+
+PARALLELL RESULTS
+
+real	0m58.979s
+user	30m35.523s
+sys	0m6.516s
+Verifying Results...
+Serial and parallel output files are IDENTICAL
+
+-------- 1000000 Days --------
+SERIAL RESULTS
+
+real	9m58.264s
+user	1m19.715s
+sys	1m2.848s
+
+PARALLEL RESULTS
+
+real	9m50.643s
+user	306m33.228s
+sys	1m0.513s
+Verifying Results...
+Serial and parallel output files are IDENTICAL
+
+Finished Parallel1_O3

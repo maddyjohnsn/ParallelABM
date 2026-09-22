@@ -1,0 +1,36 @@
+Starting weak_weak_hailMary
+
+
+------ weak_weak_hailMary Results ------
+
+		Cores: 1
+
+real	0m5.310s
+user	0m5.229s
+sys	0m0.080s
+          Cores: 2
+
+real	0m14.090s
+user	0m27.858s
+sys	0m0.304s
+          Cores: 4
+
+real	0m41.607s
+user	2m45.539s
+sys	0m0.864s
+          Cores: 8
+
+real	1m4.637s
+user	8m35.215s
+sys	0m1.816s
+          Cores: 16
+
+real	2m7.053s
+user	33m48.687s
+sys	0m3.916s
+          Cores: 32
+
+real	5m8.665s
+user	164m22.475s
+sys	0m10.767s
+Finished weak_weak_hailMary

@@ -2,8 +2,7 @@
 #include "agent.h"
 #include "simulate.h"
 #include <string.h>
-#include <stdlib.h>
-
+#include <omp.h>
 
 //will go through the Graph updating agent infection
 void updateInfection(struct Graph* graph){
@@ -16,6 +15,7 @@ void updateInfection(struct Graph* graph){
 		
 		
 		// in each node loop through agents in that node
+		 #pragma omp parallel for
 		for (int j = 0; j < node->numAgents; j++) {
 			if (node->agentsInNode[j]->isInfected == true) {
 				continue;
@@ -25,10 +25,15 @@ void updateInfection(struct Graph* graph){
 			// based on agents predisposition and number of encounters, update infection
 			if (node->agentsInNode[j]->disposition == true && node->agentsInNode[j]->infectedEncounters >= 10) {
 				node->agentsInNode[j]->isInfected = true;
+				//data racing
+				#pragma omp atomic
 				node->numInfected++; 
 			}
 			if (node->agentsInNode[j]->disposition == false && node->agentsInNode[j]->infectedEncounters >= 15) {
 				node->agentsInNode[j]->isInfected = true;
+				
+				//data racing
+                                #pragma omp atomic
 				node->numInfected++;
 			}
 		}
@@ -44,8 +49,6 @@ void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
 		int next;
 
 		//randomly decide if agent is moving left or right
-		
-		
 		int flip = rand() % 2;
 		//check that movement will not push agent off graph- loop around
 		if (flip == 0 ) { //moveBackwards
@@ -64,20 +67,25 @@ void moveAgent(struct Agent* agents, int numAgents, struct Graph* graph){
 		removeAgentFromNode(graph, current, agent);
 		//add agent to different node
 		addAgentToNode(graph, next, agent);
+			
 	}
+
 }
 
-
 void simulateDay(int days, struct Graph* graph,int numAgents, struct  Agent* agents, int* dailyInfectedCounts){
+
 
 	//every day we want to move agents x2
 	//maybe need to write data like below so we can run many simulations and not overwrite
 	//fileName = multiDayOutput
+	
+	
 	for(int i = 0; i<days; i++){
+	
 		moveAgent(agents, numAgents, graph);
 		updateInfection(graph);
 		
-	//	writeData(graph, "serialOutput");
+//		writeData(graph, "parallelOutput");
 
 		//every day we need to increment a counter for num infected and save it
 		//start by summing every infection across all nodes
@@ -89,6 +97,5 @@ void simulateDay(int days, struct Graph* graph,int numAgents, struct  Agent* age
         	dailyInfectedCounts[i] = infectedCount;
 		
 	}
-
 
 }
